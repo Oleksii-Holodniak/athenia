@@ -45,7 +45,6 @@ jobs:
 
       - name: Configure key.pem
         run: |
-          ls -la
           touch key.pem
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > key.pem
           chmod 400 key.pem
@@ -53,7 +52,7 @@ jobs:
 
       - name: PM2 restart
         run: |
-          ls -la
           cd ~/athenia
+          ls -la
           pm2 kill
           pm2 start npm --name "athenia" -- start -- --port 3000
