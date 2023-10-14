@@ -52,9 +52,6 @@ jobs:
 
       - name: PM2 restart
         run: |
-          cd
           ls -la
           pm2 kill  
-          cd ${{ secrets.REMOTE_TARGET }}
-          ls -la
-          pm2 start npm -- start
+          pm2 start ${{ secrets.REMOTE_TARGET }}/ --name "athenia"
