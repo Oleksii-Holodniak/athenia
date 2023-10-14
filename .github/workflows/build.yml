@@ -43,13 +43,15 @@ jobs:
           TARGET: ${{ secrets.REMOTE_TARGET }}
           EXCLUDE: "/node_modules/"
 
-      - name: PM2 restart
+      - name: Configure key.pem
         run: |
           touch key.pem
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > key.pem
           chmod 400 key.pem
-          ssh -i key.pem ${{secrets.USERNAME}}@${{secrets.HOST_DNS}} -p 22 '
+          ssh -i key.pem ${{secrets.USERNAME}}@${{secrets.HOST_DNS}} -p 22
+
+      - name: PM2 restart
+        run: |
           pm2 kill
           cd athenia/
           pm2 start npm --name "athenia" -- start -- --port 3000
-          '
