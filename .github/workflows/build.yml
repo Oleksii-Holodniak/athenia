@@ -40,7 +40,6 @@ jobs:
           ARGS: "-rlgoDzvc -i --delete"
           REMOTE_HOST: ${{ secrets.HOST_DNS }}
           REMOTE_USER: ${{ secrets.USERNAME }}
-          TARGET: ${{ secrets.REMOTE_TARGET }}
           EXCLUDE: "/node_modules/"
 
       - name: Configure key.pem
@@ -52,5 +51,6 @@ jobs:
 
       - name: PM2 restart
         run: |
+          ls -al
           pm2 kill
           pm2 start npm --name "athenia" -- start -- --port 3000
