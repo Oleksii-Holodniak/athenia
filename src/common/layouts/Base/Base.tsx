@@ -7,7 +7,7 @@ const Base: FC<IBaseLayout> = (props) => {
   const { children } = props;
   return (
     <>
-      {/* <Header /> */}
+      <Header />
       <Container>{children}</Container>
       <Footer />
     </>
