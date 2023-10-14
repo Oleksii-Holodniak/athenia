@@ -49,6 +49,7 @@ jobs:
           touch key.pem
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > key.pem
           chmod 400 key.pem
+          ls -la
           ssh -i key.pem ${{secrets.USERNAME}}@${{secrets.HOST_DNS}} -p 22
 
       - name: PM2 restart
