@@ -1,0 +1,154 @@
+@import url("./variable.css");
+* {
+  box-sizing: border-box;
+  padding: 0;
+  font-family: var(--nunito);
+  margin: 0;
+  color: #191919;
+}
+@media screen and (max-width: 1024px) {
+  * {
+    user-select: none;
+  }
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  overflow-y: auto;
+  padding: 0;
+  margin: 0;
+  background: var(--main-background);
+}
+
+@media screen and (max-width: 540px) {
+  html {
+    width: auto;
+    height: auto;
+  }
+}
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+*::-webkit-media-controls-panel {
+  display: none !important;
+  -webkit-appearance: none;
+}
+*::-webkit-scrollbar {
+  width: 0px;
+  background-color: #fff;
+}
+*::-webkit-scrollbar-thumb {
+  background-color: #0076a5;
+  border-radius: 2px;
+}
+*::-webkit-media-controls-play-button {
+  display: none !important;
+  -webkit-appearance: none;
+}
+
+*::-webkit-media-controls-start-playback-button {
+  display: none !important;
+  -webkit-appearance: none;
+}
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+input[type="number"]:hover,
+input[type="number"]:focus {
+  -moz-appearance: number-input;
+}
+
+li {
+  list-style: none;
+}
+
+button {
+  background-color: transparent;
+  cursor: pointer;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font-family: var(--nunito);
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+  color: #fff;
+  user-select: none;
+}
+button:focus {
+  outline: none;
+}
+a {
+  text-decoration: none;
+  cursor: pointer;
+  outline: none;
+  font-family: var(--nunito);
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  white-space: nowrap;
+  line-height: 22px;
+}
+
+span,
+b,
+div {
+  font-family: var(--nunito);
+  font-style: normal;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  margin: 0;
+  font-family: var(--nunito);
+  font-weight: normal;
+  font-style: normal;
+}
+p {
+  margin: 0;
+  font-family: var(--nunito);
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+  color: #191919;
+}
+
+img {
+  pointer-events: none;
+  outline: none;
+  border: none;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  padding: 0;
+  margin: 0;
+}
