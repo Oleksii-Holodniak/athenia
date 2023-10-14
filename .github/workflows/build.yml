@@ -52,6 +52,6 @@ jobs:
 
       - name: PM2 restart
         run: |
+          pm2 kill  
           cd ~/${{ secrets.REMOTE_TARGET }}
-          pm2 kill
-          pm2 start npm --name "athenia" -- start -- --port 3000
+          pm2 start npm -- start
