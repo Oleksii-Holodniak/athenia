@@ -52,6 +52,6 @@ jobs:
 
       - name: PM2 restart
         run: |
-          cd /home/ubuntu/athenia
           pm2 kill
+          cd /home/ubuntu/athenia
           pm2 start npm --name "athenia" -- start -- --port 3000
