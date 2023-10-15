@@ -52,5 +52,6 @@ jobs:
 
       - name: PM2 restart
         run: |
+          sudo PM2_HOME=/etc/.pm2 pm2 list
           ls -la
           pm2 list
