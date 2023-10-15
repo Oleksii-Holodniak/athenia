@@ -54,4 +54,3 @@ jobs:
         run: |
           ls -la
           pm2 list
-          pm2 restart athenia
