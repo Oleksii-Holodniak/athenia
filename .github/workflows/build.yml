@@ -53,4 +53,6 @@ jobs:
       - name: PM2 restart
         run: |
           ls -la
+          sudo env PATH=$PATH:`dirname $(which pm2)` pm2 startup ubuntu -u deploy 
+          pm2 start npm --name "athenia" -- start -- --port 3000
           pm2 list
