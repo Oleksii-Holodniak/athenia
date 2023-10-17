@@ -43,8 +43,8 @@ export const AthinaImage = styled(Image)`
 `;
 
 export const Numbers = styled.div`
-  width: calc(100% - 80px);
-  height: 200px;
+  width: 100%;
+  height: 180px;
   transform: translate(0, -30%);
   background: #fbfaf6;
   box-shadow: 0 5px 15px 0 #00000026;
