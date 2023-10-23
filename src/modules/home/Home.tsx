@@ -1,9 +1,11 @@
-import { Introduction } from "./components";
+import { Introduction, News } from "./components";
+import { mockCourse } from "./data";
 import { Wrapper } from "./styles";
 const Home = () => {
   return (
     <Wrapper>
       <Introduction />
+      <News courses={mockCourse} />
     </Wrapper>
   );
 };

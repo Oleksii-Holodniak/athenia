@@ -23,7 +23,7 @@ const Introduction = () => {
   };
 
   return (
-    <>
+    <div>
       <Container>
         <Content>
           <Title>Discover your potential</Title>
@@ -44,7 +44,7 @@ const Introduction = () => {
         </ImageContainer>
       </Container>
       <Numbers>{renderNumbers()}</Numbers>
-    </>
+    </div>
   );
 };
 

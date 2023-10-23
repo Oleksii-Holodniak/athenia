@@ -44,7 +44,7 @@ export const AthinaImage = styled(Image)`
 
 export const Numbers = styled.div`
   width: 100%;
-  height: 180px;
+  height: 150px;
   transform: translate(0, -30%);
   background: #fbfaf6;
   box-shadow: 0 5px 15px 0 #00000026;
@@ -60,12 +60,12 @@ export const NumberItem = styled.div`
   align-items: center;
   gap: 4px;
   strong {
-    font-size: 32px;
+    font-size: 28px;
     font-weight: 800;
     color: #191919;
   }
   span {
-    font-size: 18px;
+    font-size: 16px;
     color: #000000b1;
     font-weight: 600;
   }
