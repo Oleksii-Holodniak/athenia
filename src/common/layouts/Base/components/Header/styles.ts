@@ -10,7 +10,7 @@ export const Wrapper = styled.header`
   position: fixed;
   top: 0;
   left: 0;
-  background-color: #f1efe379;
+  background-color: #f1efe3d7;
   backdrop-filter: blur(4px);
   z-index: 1000;
 `;
