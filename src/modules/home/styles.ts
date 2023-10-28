@@ -5,7 +5,7 @@ import styled from "styled-components";
 export const Wrapper = styled.div`
   ${({ theme }) => theme.content.sizing}
   ${({ theme }) => theme.leveling.flex.column}
-  gap: 40px;
+  gap: 100px;
 `;
 
 export const Title = styled.h2`

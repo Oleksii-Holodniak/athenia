@@ -7,7 +7,7 @@ export const CarouselContainer = styled.div`
   .swiper {
     width: 100%;
     height: 100%;
-    padding-bottom: 30px;
+    padding-bottom: 10px;
   }
   width: 100%;
   overflow: auto;
@@ -20,7 +20,6 @@ export const CarouselContainer = styled.div`
   }
   .slider_container {
     padding-top: 16px;
-    padding-bottom: 44px;
   }
   .swiper-pagination-bullet {
     background-color: #b3b3b3;

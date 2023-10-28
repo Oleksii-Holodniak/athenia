@@ -18,7 +18,7 @@ export const numbers: INumbers[] = [
   },
   {
     name: "Years on the market",
-    count: 3,
+    count: 4,
     id: 3,
   },
 ];

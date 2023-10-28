@@ -5,7 +5,7 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   ${({ theme }) => theme.leveling.flex.between}
-  padding: 0px 0 40px 0;
+  padding:  0;
 `;
 
 export const Content = styled.div`
@@ -13,11 +13,16 @@ export const Content = styled.div`
   max-width: 800px;
   ${({ theme }) => theme.leveling.flex.column}
   gap: 24px;
+  button {
+    width: fit-content;
+    padding: 12px 32px;
+    font-size: 18px;
+  }
 `;
 
 export const Title = styled.h2`
-  font-family: var(--greece-font);
-  font-size: 60px;
+  font-size: 46px;
+  font-weight: 600;
   text-transform: uppercase;
 `;
 export const Paragraph = styled.p`
@@ -45,7 +50,6 @@ export const AthinaImage = styled(Image)`
 export const Numbers = styled.div`
   width: 100%;
   height: 150px;
-  transform: translate(0, -30%);
   background: #fbfaf6;
   box-shadow: 0 5px 15px 0 #00000026;
   border-radius: 16px;
