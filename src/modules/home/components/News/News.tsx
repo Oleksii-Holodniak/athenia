@@ -1,8 +1,10 @@
 "use client";
 
 import Carousel from "@/common/components/Carousel/Carousel";
+import { BASE_COVERFLOW_CONFIG } from '@/common/constants/general';
 import { FC } from "react";
 import "swiper/css";
+import { Autoplay } from "swiper/modules";
 import { SwiperSlide } from "swiper/react";
 import { Title } from "../../styles";
 import { Item } from "./components";
@@ -23,7 +25,9 @@ const News: FC<INewsProps> = (props) => {
   return (
     <Wrapper>
       <Title>Popular Courses</Title>
-      <Carousel>{renderTabSlides()}</Carousel>
+      <Carousel config={{ ...BASE_COVERFLOW_CONFIG, modules: [Autoplay] }}>
+        {renderTabSlides()}
+      </Carousel>
     </Wrapper>
   );
 };

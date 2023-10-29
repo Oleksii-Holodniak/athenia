@@ -3,7 +3,7 @@
 import imageStudy from "@/assets/images/greece-study.png";
 import { FC, useState } from "react";
 import { AccordionItem } from "./components";
-import { Accordion, Flex, ImageStudy, Title, Wrapper } from "./styles";
+import { Accordion, Flex, ImageStudy, Wrapper } from "./styles";
 import { ITheBest } from "./types";
 
 const TheBest: FC<ITheBest> = (props) => {
@@ -18,7 +18,6 @@ const TheBest: FC<ITheBest> = (props) => {
 
   return (
     <Wrapper>
-      <Title>The best education for all</Title>
       <Flex>
         <ImageStudy src={imageStudy} alt='study' />
         <Accordion>{renderItems()}</Accordion>

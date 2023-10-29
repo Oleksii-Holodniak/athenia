@@ -18,3 +18,10 @@ export interface IAward {
   id: number;
   image: string | StaticImageData;
 }
+
+export interface IComment {
+  comment: string;
+  image: StaticImageData;
+  name: string;
+  id: number;
+}

@@ -13,6 +13,7 @@ export const Summary = styled.div<IOpen>`
   padding: 16px;
   width: 100%;
   text-align: left;
+  background-color: #fff;
   position: relative;
   span {
     display: block;
