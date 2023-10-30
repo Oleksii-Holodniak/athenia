@@ -8,9 +8,10 @@ const GoldButton: FC<IButton> = (props) => {
     theme = "default",
     type = "fill",
     children,
+    onClick,
   } = props;
   return (
-    <Button isRounded={isRounded} type={type} theme={theme}>
+    <Button isRounded={isRounded} type={type} theme={theme} onClick={onClick}>
       {children}
     </Button>
   );

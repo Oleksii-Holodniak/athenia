@@ -34,7 +34,9 @@ body {
     color-scheme: dark;
   }
 }
-
+input {
+  background-color: #fff;
+}
 *,
 *:before,
 *:after {
