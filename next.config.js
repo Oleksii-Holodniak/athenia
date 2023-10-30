@@ -4,7 +4,7 @@ const nextConfig = {
     styledComponents: true,
   },
   env: {
-    HOME_PAGE_MODAL_URL: process.env.HOME_PAGE_MODAL_URL,
+    BASE_URL: process.env.BASE_URL,
   },
 };
 
