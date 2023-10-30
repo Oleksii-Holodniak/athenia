@@ -5,12 +5,12 @@ import Link from "next/link";
 import styled from "styled-components";
 
 export const Wrapper = styled.header`
-  height: 60px;
+  height: 72px;
   width: 100%;
   position: fixed;
   top: 0;
   left: 0;
-  background-color: #f1efe379;
+  background-color: #f1efe3d7;
   backdrop-filter: blur(4px);
   z-index: 1000;
 `;
@@ -23,9 +23,9 @@ export const Container = styled.div`
 `;
 
 export const Logo = styled(Image)`
-  height: calc(100% - 10px);
+  height: calc(100% - 20px);
   object-fit: contain;
-  margin-right: 20px;
+  margin-right: 10px;
   width: auto;
 `;
 

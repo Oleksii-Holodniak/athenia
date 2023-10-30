@@ -2,10 +2,13 @@
 
 import styled from "styled-components";
 
-export const Wrapper = styled.div`
-  ${({ theme }) => theme.content.sizing}
+export const Container = styled.div`
   ${({ theme }) => theme.leveling.flex.column}
-  gap: 40px;
+  gap: 120px;
+`;
+
+export const Wrapper = styled(Container)`
+  ${({ theme }) => theme.content.sizing}
 `;
 
 export const Title = styled.h2`

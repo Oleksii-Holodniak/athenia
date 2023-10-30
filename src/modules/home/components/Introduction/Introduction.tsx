@@ -1,3 +1,4 @@
+import { Button } from "@/ui-library/buttons";
 import { numbers } from "./data";
 import {
   AthinaImage,
@@ -10,7 +11,7 @@ import {
   Title,
 } from "./styles";
 
-import imageAthina from "@/assets/images/athina.webp";
+import imageAthina from "@/assets/images/3.png";
 
 const Introduction = () => {
   const renderNumbers = () => {
@@ -33,11 +34,9 @@ const Introduction = () => {
             learn at your own pace and convenience, wherever you are. Choose
             from a wide range of topics that pique your interest and tailor your
             learning experience. Our platform empowers you to expand your
-            horizons, allowing you to acquire new skills and knowledge. Join our
-            community of learners today and embark on a journey of personal and
-            professional growth. With us, you can chart your path to success and
-            unlock your full potential. Start your educational adventure now!
+            horizons, allowing you to acquire new skills and knowledge.
           </Paragraph>
+          <Button theme='gold'>Get Started</Button>
         </Content>
         <ImageContainer>
           <AthinaImage src={imageAthina} alt='athina' />

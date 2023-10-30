@@ -1,7 +1,7 @@
 import { PropsWithChildren } from "react";
-import { CoverflowEffectOptions } from "swiper/types";
+import { SwiperProps } from "swiper/react";
 
 export interface ITabsCarousel extends PropsWithChildren {
   breakpoints?: any;
-  coverflowConfig?: CoverflowEffectOptions;
+  config?: SwiperProps;
 }

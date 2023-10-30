@@ -1,5 +1,8 @@
-import imageLogo from "@/assets/images/logo.webp";
+"use client";
+import imageLogo from "@/assets/images/favicon.png";
+import { LINK_TEMPLATES } from "@/common/constants/links";
 import { Button } from "@/ui-library/buttons";
+import { useRouter } from "next/navigation";
 import { navigation } from "./data";
 import {
   ButtonContainer,
@@ -11,6 +14,8 @@ import {
 } from "./styles";
 
 const Header = () => {
+  const { push } = useRouter();
+
   const renderNavigations = () => {
     return navigation.map((item) => (
       <Item key={item.id} href={item.path}>
@@ -26,10 +31,19 @@ const Header = () => {
           {renderNavigations()}
         </Navigations>
         <ButtonContainer>
-          <Button theme='gold' type='outline'>
+          <Button
+            theme='gold'
+            type='outline'
+            onClick={() => push(LINK_TEMPLATES.LOGIN())}
+          >
             Sign in
           </Button>
-          <Button theme='gold'>Sign up</Button>
+          <Button
+            theme='gold'
+            onClick={() => push(LINK_TEMPLATES.REGISTRATION())}
+          >
+            Sign up
+          </Button>
         </ButtonContainer>
       </Container>
     </Wrapper>

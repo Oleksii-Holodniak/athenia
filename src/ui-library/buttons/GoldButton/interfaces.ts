@@ -7,4 +7,5 @@ export interface IButton extends PropsWithChildren {
   isRounded?: boolean;
   theme?: ITheme;
   type?: IType;
+  onClick?: () => void;
 }

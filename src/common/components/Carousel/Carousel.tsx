@@ -1,25 +1,18 @@
 "use client";
-import { BASE_COVERFLOW_CONFIG } from "@/common/constants/general";
 import { FC } from "react";
 import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
-import { Navigation, Pagination } from "swiper/modules";
+import "swiper/css/autoplay";
+
 import { Swiper } from "swiper/react";
 import { CarouselContainer, SwiperContainer } from "./styles";
 import { ITabsCarousel } from "./types";
 
 const Carousel: FC<ITabsCarousel> = (props) => {
-  const { children, breakpoints } = props;
-
+  const { children, breakpoints, config } = props;
   return (
     <CarouselContainer>
       <SwiperContainer>
-        <Swiper
-          {...BASE_COVERFLOW_CONFIG}
-          modules={[Navigation, Pagination]}
-          breakpoints={breakpoints}
-        >
+        <Swiper {...config} breakpoints={breakpoints}>
           {children}
         </Swiper>
       </SwiperContainer>
