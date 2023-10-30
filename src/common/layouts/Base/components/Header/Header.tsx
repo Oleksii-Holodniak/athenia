@@ -1,4 +1,4 @@
-import imageLogo from "@/assets/images/logo.webp";
+import imageLogo from "@/assets/images/favicon.png";
 import { Button } from "@/ui-library/buttons";
 import { navigation } from "./data";
 import {

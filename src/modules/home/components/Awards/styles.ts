@@ -6,21 +6,14 @@ export const Wrapper = styled.div`
   max-width: 1140px;
   margin: 0 auto;
   width: 100%;
-  gap: 24px;
+  gap: 16px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
 `;
 
 export const Card = styled.div`
-  padding: 32px 24px;
-  ${({ theme }) => theme.leveling.flex.column}
-  gap: 16px;
-  border: 1px solid #ccccccb1;
-  border-radius: 8px;
-  justify-content: center;
-  align-items: center;
-  box-shadow: 0px 0px 10px 0px #5656560f;
   position: relative;
+  padding: 80px 60px 40px 60px;
 `;
 
 export const Title = styled.span`
@@ -44,7 +37,24 @@ export const ImageAward = styled(Image)`
   object-fit: contain;
   height: auto;
   margin-top: 20px;
-  /* bottom: 24px;
-  left: 50%;
-  transform: translateX(-50%); */
+  overflow: hidden;
+  border-radius: 100px;
+`;
+
+export const Content = styled.div`
+  ${({ theme }) => theme.leveling.flex.column}
+  gap: 16px;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+`;
+
+export const Background = styled(Image)`
+  object-fit: contain;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
 `;

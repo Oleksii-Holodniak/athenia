@@ -6,6 +6,7 @@ import styled from "styled-components";
 export const Container = styled.div`
   ${({ theme }) => theme.leveling.flex.between}
   padding:  0;
+  gap: 40px;
 `;
 
 export const Content = styled.div`
@@ -50,10 +51,11 @@ export const AthinaImage = styled(Image)`
 export const Numbers = styled.div`
   width: 100%;
   height: 150px;
-  background: #fbfaf6;
-  box-shadow: 0 5px 15px 0 #00000026;
-  border-radius: 16px;
-  padding: 30px 0;
+  background: #ffffffcc;
+  box-shadow: 0 5px 10px 0 #00000014;
+  border-radius: 8px;
+  border: 1px solid #b3b3b342;
+  padding: 20px 0;
   display: grid;
   grid-template-columns: repeat(4, 25%);
 `;

@@ -8,15 +8,6 @@ export const Wrapper = styled.div`
   gap: 40px;
 `;
 
-export const Title = styled.h3`
-  font-size: 42px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: normal;
-  width: 100%;
-  text-align: center;
-`;
-
 export const ImageStudy = styled(Image)`
   height: 400px;
   width: auto;

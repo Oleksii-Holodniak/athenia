@@ -11,7 +11,7 @@ import {
   Title,
 } from "./styles";
 
-import imageAthina from "@/assets/images/athina.webp";
+import imageAthina from "@/assets/images/3.png";
 
 const Introduction = () => {
   const renderNumbers = () => {
