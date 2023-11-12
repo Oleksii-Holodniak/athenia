@@ -38,8 +38,8 @@ const Registration = () => {
       password,
     };
     try {
-      const { status } = await AuthService.register(regData);
-      if (status === 200) {
+      const { data } = await AuthService.register(regData);
+      if (data.status === 200) {
         enqueueSnackbar({ variant: "success", message: "Successfully" });
       }
     } catch (e) {

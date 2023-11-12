@@ -18,10 +18,10 @@ const Login = () => {
   } = useForm<ILoginFormValues>({ mode: "onSubmit" });
   const { push } = useRouter();
   const { enqueueSnackbar } = useSnackbar();
-  const onSubmit = async (data: ILoginFormValues) => {
+  const onSubmit = async (form: ILoginFormValues) => {
     try {
-      const { status } = await AuthService.login(data);
-      if (status === 200) {
+      const { data } = await AuthService.login(form);
+      if (data.status === 200) {
         enqueueSnackbar({ variant: "success", message: "Successfully" });
       }
     } catch (e) {
