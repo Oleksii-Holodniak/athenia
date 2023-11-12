@@ -4,7 +4,7 @@ import Image from "next/image";
 import styled from "styled-components";
 
 export const Container = styled.div`
-  ${({ theme }) => theme.leveling.flex.between}
+  ${({ theme }) => theme.flex.between}
   padding:  0;
   gap: 40px;
 `;
@@ -12,7 +12,7 @@ export const Container = styled.div`
 export const Content = styled.div`
   width: 100%;
   max-width: 800px;
-  ${({ theme }) => theme.leveling.flex.column}
+  ${({ theme }) => theme.flex.column}
   gap: 24px;
   button {
     width: fit-content;
@@ -61,7 +61,7 @@ export const Numbers = styled.div`
 `;
 
 export const NumberItem = styled.div`
-  ${({ theme }) => theme.leveling.flex.column}
+  ${({ theme }) => theme.flex.column}
   justify-content: center;
   align-items: center;
   gap: 4px;

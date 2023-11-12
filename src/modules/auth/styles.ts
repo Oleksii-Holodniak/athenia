@@ -1,0 +1,21 @@
+"use client";
+import { Button } from "@/ui-library/buttons";
+import styled from "styled-components";
+
+export const Form = styled.form`
+  ${({ theme }) => theme.flex.column};
+  width: 100%;
+  max-width: 400px;
+`;
+
+export const SubmitButton = styled(Button)`
+  padding: 10px 20px;
+`;
+
+export const EmptyButton = styled(SubmitButton)`
+  background: transparent;
+  box-shadow: none;
+  text-shadow: none;
+  border: none;
+  color: rgba(221, 155, 47, 1);
+`;

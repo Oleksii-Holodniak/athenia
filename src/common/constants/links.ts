@@ -3,9 +3,9 @@ export const LINK_TEMPLATES = {
     return "/";
   },
   LOGIN: () => {
-    return `/login`;
+    return `/auth/login`;
   },
   REGISTRATION: () => {
-    return `/registration`;
+    return `/auth/registration`;
   },
 };

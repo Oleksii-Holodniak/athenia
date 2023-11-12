@@ -3,7 +3,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  ${({ theme }) => theme.leveling.flex.column}
+  ${({ theme }) => theme.flex.column}
   gap: 120px;
 `;
 

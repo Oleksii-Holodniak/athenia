@@ -3,7 +3,7 @@ import Image from "next/image";
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
-  ${({ theme }) => theme.leveling.flex.between}
+  ${({ theme }) => theme.flex.between}
   width: 100%;
   padding: 10px;
   background-color: #f4f4f4b9;

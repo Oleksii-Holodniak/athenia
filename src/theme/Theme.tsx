@@ -2,9 +2,63 @@
 import { FC, PropsWithChildren } from "react";
 import { ThemeProvider, css } from "styled-components";
 
+import { SnackbarProvider } from "notistack";
 import { ITheme } from "./types";
 
 export const config: ITheme = {
+  colors: {
+    primary: {
+      main0: "#ffffff",
+      main10: "#F9FCFF",
+      main25: "#F5FAFF",
+      main50: "#EFF7FF",
+      main100: "#D7EBFF",
+      main200: "#C1E0FF",
+      main300: "#8DBFF1",
+      main400: "#53A2F0",
+      main500: "#358CE1",
+      main600: "#1F75CB",
+      main700: "#1261AF",
+      main800: "#174A7C",
+      main900: "#033465",
+      // gray
+      gray25: "#FCFCFD",
+      gray50: "#F9FAFB",
+      gray100: "#F2F4F7",
+      gray200: "#EAECF0",
+      gray300: "#D0D5DD",
+      gray400: "#98A2B3",
+      gray500: "#6A7482",
+      gray600: "#475467",
+      gray700: "#344054",
+      gray800: "#1D2939",
+      gray900: "#101828",
+      // blue gray
+      blueGray25: "#FCFCFD",
+      blueGray50: "#F8F9FC",
+      blueGray100: "#EAECF5",
+      blueGray200: "#D5D9EB",
+      blueGray300: "#AFB5D9",
+      blueGray400: "#717BBC",
+      blueGray500: "#4E5BA6",
+      blueGray600: "#3E4784",
+      blueGray700: "#363F72",
+      blueGray800: "#293056",
+      blueGray900: "#101323",
+      // error
+      error25: "#FFFBFA",
+      error50: "#FEF3F2",
+      error100: "#FEE4E2",
+      error200: "#FECDCA",
+      error300: "#FDA29B",
+      error400: "#F97066",
+      error500: "#F04438",
+      error600: "#D92D20",
+      error700: "#B42318",
+      error800: "#912018",
+      error900: "#7A271A",
+    },
+  },
   text: {
     overflow: css`
       text-overflow: ellipsis;
@@ -20,32 +74,31 @@ export const config: ITheme = {
         overflow: hidden;
       `,
   },
-  leveling: {
-    absoluteCenter: css`
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
+  absoluteCenter: css`
+    opacity: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  `,
+  flex: {
+    center: css`
+      display: flex;
+      justify-content: center;
+      align-items: center;
     `,
-    flex: {
-      center: css`
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      `,
-      row: css`
-        display: flex;
-        align-items: center;
-      `,
-      column: css`
-        display: flex;
-        flex-direction: column;
-      `,
-      between: css`
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-      `,
-    },
+    row: css`
+      display: flex;
+      align-items: center;
+    `,
+    column: css`
+      display: flex;
+      flex-direction: column;
+    `,
+    between: css`
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    `,
   },
   content: {
     sizing: css`
@@ -94,7 +147,11 @@ export const config: ITheme = {
 
 const Theme: FC<PropsWithChildren> = (props) => {
   const { children } = props;
-  return <ThemeProvider theme={config}>{children}</ThemeProvider>;
+  return (
+    <ThemeProvider theme={config}>
+      <SnackbarProvider>{children}</SnackbarProvider>
+    </ThemeProvider>
+  );
 };
 
 export default Theme;

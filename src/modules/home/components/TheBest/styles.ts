@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 export const Wrapper = styled.div`
   width: 100%;
-  ${({ theme }) => theme.leveling.flex.column}
+  ${({ theme }) => theme.flex.column}
   gap: 40px;
 `;
 
@@ -15,7 +15,7 @@ export const ImageStudy = styled(Image)`
 `;
 
 export const Flex = styled.div`
-  ${({ theme }) => theme.leveling.flex.between}
+  ${({ theme }) => theme.flex.between}
   align-items: stretch;
   gap: 40px;
   width: 100%;
@@ -24,7 +24,7 @@ export const Flex = styled.div`
 `;
 
 export const Accordion = styled.div`
-  ${({ theme }) => theme.leveling.flex.column}
+  ${({ theme }) => theme.flex.column}
   height: 100%;
   width: 100%;
 `;

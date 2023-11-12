@@ -42,7 +42,7 @@ export const ImageAward = styled(Image)`
 `;
 
 export const Content = styled.div`
-  ${({ theme }) => theme.leveling.flex.column}
+  ${({ theme }) => theme.flex.column}
   gap: 16px;
   align-items: center;
   position: relative;

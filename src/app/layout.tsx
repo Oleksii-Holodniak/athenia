@@ -1,4 +1,3 @@
-import { BaseLayout } from "@/common/layouts";
 import StyledComponentsRegistry from "@/lib/registry";
 import "@/styles/globals.css";
 import Theme from "@/theme/Theme";
@@ -26,9 +25,7 @@ export default function RootLayout({
     <html lang="en" className={`${greece.variable} ${nunito.variable}`}>
       <body>
         <StyledComponentsRegistry>
-          <Theme>
-            <BaseLayout>{children}</BaseLayout>
-          </Theme>
+          <Theme>{children}</Theme>
         </StyledComponentsRegistry>
       </body>
     </html>

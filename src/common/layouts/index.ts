@@ -1,1 +1,2 @@
-export { default as BaseLayout } from "./Base/Base";
+export { default as RootLayout } from "./RootLayout/RootLayout";
+export { default as AuthLayout } from "./AuthLayout/AuthLayout";

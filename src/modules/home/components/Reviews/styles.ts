@@ -8,12 +8,12 @@ export const Card = styled.div`
   background-color: #ececec;
   border-radius: 8px;
   padding: 24px;
-  ${({ theme }) => theme.leveling.flex.row}
+  ${({ theme }) => theme.flex.row}
   gap: 16px;
 `;
 
 export const Column = styled.div`
-  ${({ theme }) => theme.leveling.flex.column}
+  ${({ theme }) => theme.flex.column}
   width: calc(100% - 166px);
 `;
 

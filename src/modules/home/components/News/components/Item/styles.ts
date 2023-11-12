@@ -27,7 +27,7 @@ export const CardImage = styled(Image)`
 export const Info = styled.div`
   padding: 8px 12px;
   display: flex;
-  ${({ theme }) => theme.leveling.flex.column}
+  ${({ theme }) => theme.flex.column}
   gap: 4px;
 `;
 

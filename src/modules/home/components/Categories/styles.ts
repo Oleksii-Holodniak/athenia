@@ -11,7 +11,7 @@ export const Wrapper = styled.div`
 export const Card = styled.div`
   position: relative;
   aspect-ratio: 6 / 5;
-  ${({ theme }) => theme.leveling.flex.center}
+  ${({ theme }) => theme.flex.center}
   padding: 12px;
   border-radius: 4px;
   overflow: hidden;
