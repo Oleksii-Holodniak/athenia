@@ -1,11 +1,11 @@
 export interface ILoginFormValues {
+  username: string;
   password: string;
-  email: string;
 }
 
 export interface IRegistrationFormValues extends ILoginFormValues {
-  username: string;
   confirm_password: string;
+  email: string;
 }
 
 export interface IRegisterApi

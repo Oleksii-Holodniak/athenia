@@ -41,6 +41,7 @@ const Registration = () => {
       const { data } = await AuthService.register(regData);
       if (data.status === 200) {
         enqueueSnackbar({ variant: "success", message: "Successfully" });
+        push(LINK_TEMPLATES.PROFILE());
       }
     } catch (e) {
       const error = e as IResponse;

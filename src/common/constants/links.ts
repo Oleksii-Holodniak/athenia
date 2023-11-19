@@ -8,4 +8,10 @@ export const LINK_TEMPLATES = {
   REGISTRATION: () => {
     return `/auth/registration`;
   },
+  PROFILE: () => {
+    return `/profile`;
+  },
+  COURSES: () => {
+    return `/courses`;
+  },
 };

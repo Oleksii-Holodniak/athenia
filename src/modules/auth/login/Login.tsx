@@ -1,6 +1,5 @@
 "use client";
 import { LINK_TEMPLATES } from "@/common/constants/links";
-import { patterns } from "@/common/helpers/patterns";
 import { IResponse } from "@/common/types/general";
 import { Input } from "@/ui-library/inputs";
 import { useRouter } from "next/navigation";
@@ -21,9 +20,10 @@ const Login = () => {
   const onSubmit = async (form: ILoginFormValues) => {
     try {
       const { data } = await AuthService.login(form);
-      if (data.status === 200) {
-        enqueueSnackbar({ variant: "success", message: "Successfully" });
-      }
+      // if (data.status === 200) {
+      // enqueueSnackbar({ variant: "success", message: "Successfully" });
+      push(LINK_TEMPLATES.PROFILE());
+      // }
     } catch (e) {
       const error = e as IResponse;
       enqueueSnackbar({ variant: "error", message: error.message });
@@ -33,15 +33,11 @@ const Login = () => {
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
       <Input
-        placeholder={"Enter email"}
-        {...register("email", {
+        placeholder={"Enter Username"}
+        {...register("username", {
           required: true,
-          pattern: {
-            value: patterns.email,
-            message: "Incorrect email",
-          },
         })}
-        error={errors.email}
+        error={errors.username}
       />
       <Input
         placeholder={"Enter password"}

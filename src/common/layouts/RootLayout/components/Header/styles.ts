@@ -51,3 +51,14 @@ export const ButtonContainer = styled.div`
   justify-content: flex-end;
   gap: 16px;
 `;
+
+export const Avatar = styled(Link)`
+  height: 60%;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  ${({ theme }) => theme.flex.center};
+  border: 1px solid #cccccc;
+  background-color: #f3f2f2;
+  color: #191919;
+  text-transform: uppercase;
+`;
