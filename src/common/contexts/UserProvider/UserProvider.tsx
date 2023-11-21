@@ -13,6 +13,9 @@ export const UserProvider: FC<IUserProps> = ({
   status,
 }) => {
   console.log("status :", status);
+  console.log("process.env.COOKIES_NAME :", process.env.COOKIES_NAME);
+  console.log("process.env.BASE_URL :", process.env.BASE_URL);
+
   const [user, setUser] = useState<IUser | null>(initUser);
 
   return (
