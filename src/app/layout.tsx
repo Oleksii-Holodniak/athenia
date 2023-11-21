@@ -25,25 +25,31 @@ const getUser = async (): Promise<IUser | null> => {
     const cookieStore = cookies();
     const token = cookieStore.get(process.env.COOKIES_NAME!);
 
+    if (!token) {
+      return null;
+    }
+
     const res = await fetch(`${process.env.BASE_URL}/user/info`, {
       headers: {
-        Cookie: `${token?.name}=${token?.value}`,
+        Cookie: `${token.name}=${token.value}`,
       },
     });
-    if (res?.status === 200) {
+
+    if (res.status === 200) {
       const data = await res.json();
-      if (data?.result && data?.result?.length > 0) {
-        return data?.result[0];
+      if (data?.result && data.result.length > 0) {
+        return data.result[0];
       } else {
         return null;
       }
     } else {
+      console.error(`Error fetching user data. Status: ${res.status}`);
       return null;
     }
-  } catch (err) {
-    console.log("err :", err);
+  } catch (error) {
+    console.error("Error fetching user:", error);
+    return null;
   }
-  return null;
 };
 
 export default async function RootLayout({

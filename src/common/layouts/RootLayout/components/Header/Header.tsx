@@ -18,6 +18,7 @@ import {
 const Header = () => {
   const { push } = useRouter();
   const { user } = useUser();
+  console.log("user :", user);
 
   const renderNavigations = () => {
     return navigation.map((item) => (
