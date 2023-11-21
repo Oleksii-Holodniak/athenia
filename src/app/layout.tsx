@@ -21,24 +21,29 @@ export const metadata: Metadata = {
 };
 
 const getUser = async (): Promise<IUser | null> => {
-  const cookieStore = cookies();
-  const token = cookieStore.get(process.env.COOKIES_NAME!);
+  try {
+    const cookieStore = cookies();
+    const token = cookieStore.get(process.env.COOKIES_NAME!);
 
-  const res = await fetch(`${process.env.BASE_URL}/user/info`, {
-    headers: {
-      Cookie: `${token?.name}=${token?.value}`,
-    },
-  });
-  if (res?.status === 200) {
-    const data = await res.json();
-    if (data?.result && data?.result?.length > 0) {
-      return data?.result[0];
+    const res = await fetch(`${process.env.BASE_URL}/user/info`, {
+      headers: {
+        Cookie: `${token?.name}=${token?.value}`,
+      },
+    });
+    if (res?.status === 200) {
+      const data = await res.json();
+      if (data?.result && data?.result?.length > 0) {
+        return data?.result[0];
+      } else {
+        return null;
+      }
     } else {
       return null;
     }
-  } else {
-    return null;
+  } catch (err) {
+    console.log("err :", err);
   }
+  return null;
 };
 
 export default async function RootLayout({
