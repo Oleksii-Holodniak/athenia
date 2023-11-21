@@ -29,10 +29,10 @@ const getUser = async (): Promise<IUser | null> => {
       Cookie: `${token?.name}=${token?.value}`,
     },
   });
-  if (res.status === 200) {
+  if (res?.status === 200) {
     const data = await res.json();
-    if (data.result && data.result.length > 0) {
-      return data.result[0];
+    if (data?.result && data?.result?.length > 0) {
+      return data?.result[0];
     } else {
       return null;
     }
@@ -46,12 +46,12 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  // const user = await getUser();
+  const user = await getUser();
   return (
     <html lang="en" className={`${greece.variable} ${nunito.variable}`}>
       <body>
         <StyledComponentsRegistry>
-          <UserProvider initUser={null}>
+          <UserProvider initUser={user}>
             <Theme>{children}</Theme>
           </UserProvider>
         </StyledComponentsRegistry>
