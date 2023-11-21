@@ -6,6 +6,7 @@ const nextConfig = {
 
   env: {
     BASE_URL: process.env.BASE_URL,
+    COOKIES_NAME: process.env.COOKIES_NAME,
   },
 };
 
