@@ -46,12 +46,12 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const user = await getUser();
+  // const user = await getUser();
   return (
     <html lang="en" className={`${greece.variable} ${nunito.variable}`}>
       <body>
         <StyledComponentsRegistry>
-          <UserProvider initUser={user}>
+          <UserProvider initUser={null}>
             <Theme>{children}</Theme>
           </UserProvider>
         </StyledComponentsRegistry>
