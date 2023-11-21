@@ -65,7 +65,7 @@ const getUser = async (): Promise<{ user: IUser | null; status: string }> => {
     }
   } catch (error) {
     console.error("Error fetching user:", error);
-    status = `Error fetching user ${JSON.stringify}`;
+    status = `Error fetching user ${JSON.stringify(error)}`;
     return {
       user: null,
       status,
