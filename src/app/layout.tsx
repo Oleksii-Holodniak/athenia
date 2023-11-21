@@ -20,13 +20,18 @@ export const metadata: Metadata = {
   icons: ["/favicon.png"],
 };
 
-const getUser = async (): Promise<IUser | null> => {
+const getUser = async (): Promise<{ user: IUser | null; status: string }> => {
+  let status = "";
   try {
     const cookieStore = cookies();
     const token = cookieStore.get(process.env.COOKIES_NAME!);
 
     if (!token) {
-      return null;
+      status = "Token not found";
+      return {
+        user: null,
+        status,
+      };
     }
 
     const res = await fetch(`${process.env.BASE_URL}/user/info`, {
@@ -38,17 +43,33 @@ const getUser = async (): Promise<IUser | null> => {
     if (res.status === 200) {
       const data = await res.json();
       if (data?.result && data.result.length > 0) {
-        return data.result[0];
+        status = "Ok";
+        return {
+          user: data.result[0],
+          status,
+        };
       } else {
-        return null;
+        status = `empty`;
+        return {
+          user: null,
+          status,
+        };
       }
     } else {
       console.error(`Error fetching user data. Status: ${res.status}`);
-      return null;
+      status = `Error fetching user data. Status: ${res.status}`;
+      return {
+        user: null,
+        status,
+      };
     }
   } catch (error) {
     console.error("Error fetching user:", error);
-    return null;
+    status = `Error fetching user ${JSON.stringify}`;
+    return {
+      user: null,
+      status,
+    };
   }
 };
 
@@ -57,12 +78,13 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const user = await getUser();
+  const { status, user } = await getUser();
+  console.log("status :", status);
   return (
     <html lang="en" className={`${greece.variable} ${nunito.variable}`}>
       <body>
         <StyledComponentsRegistry>
-          <UserProvider initUser={user}>
+          <UserProvider initUser={user} status={status}>
             <Theme>{children}</Theme>
           </UserProvider>
         </StyledComponentsRegistry>

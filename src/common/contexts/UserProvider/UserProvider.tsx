@@ -7,7 +7,12 @@ const UserContext = createContext<IUserContext>({} as IUserContext);
 
 export const useUser = () => useContext(UserContext);
 
-export const UserProvider: FC<IUserProps> = ({ children, initUser }) => {
+export const UserProvider: FC<IUserProps> = ({
+  children,
+  initUser,
+  status,
+}) => {
+  console.log("status :", status);
   const [user, setUser] = useState<IUser | null>(initUser);
 
   return (

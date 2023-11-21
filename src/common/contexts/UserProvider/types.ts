@@ -8,4 +8,5 @@ export interface IUserContext {
 
 export interface IUserProps extends PropsWithChildren {
   initUser: IUser | null;
+  status: string;
 }
