@@ -20,18 +20,13 @@ export const metadata: Metadata = {
   icons: ["/favicon.png"],
 };
 
-const getUser = async (): Promise<{ user: IUser | null; status: string }> => {
-  let status = "";
+const getUser = async (): Promise<IUser | null> => {
   try {
     const cookieStore = cookies();
     const token = cookieStore.get(process.env.COOKIES_NAME!);
 
     if (!token) {
-      status = "Token not found";
-      return {
-        user: null,
-        status,
-      };
+      return null;
     }
 
     const res = await fetch(`${process.env.BASE_URL}/user/info`, {
@@ -43,33 +38,16 @@ const getUser = async (): Promise<{ user: IUser | null; status: string }> => {
     if (res.status === 200) {
       const data = await res.json();
       if (data?.result && data.result.length > 0) {
-        status = "Ok";
-        return {
-          user: data.result[0],
-          status,
-        };
+        return data.result[0];
       } else {
-        status = `empty`;
-        return {
-          user: null,
-          status,
-        };
+        return null;
       }
     } else {
       console.error(`Error fetching user data. Status: ${res.status}`);
-      status = `Error fetching user data. Status: ${res.status}`;
-      return {
-        user: null,
-        status,
-      };
+      return null;
     }
   } catch (error) {
-    console.error("Error fetching user:", error);
-    status = `Error fetching user ${JSON.stringify(error)}`;
-    return {
-      user: null,
-      status,
-    };
+    return null;
   }
 };
 
@@ -78,13 +56,12 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const { status, user } = await getUser();
-  console.log("status :", status);
+  const user = await getUser();
   return (
     <html lang="en" className={`${greece.variable} ${nunito.variable}`}>
       <body>
         <StyledComponentsRegistry>
-          <UserProvider initUser={user} status={status}>
+          <UserProvider initUser={user}>
             <Theme>{children}</Theme>
           </UserProvider>
         </StyledComponentsRegistry>

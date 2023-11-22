@@ -5,4 +5,8 @@ export const UserService = {
     const data = await axios.post("/user/info");
     return data;
   },
+
+  async logOut() {
+    await axios.post("/auth/logout");
+  },
 };
