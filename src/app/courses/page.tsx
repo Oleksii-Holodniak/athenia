@@ -1,9 +1,10 @@
 import { RootLayout } from "@/common/layouts";
+import Courses from "@/modules/courses/Courses";
 
 const CoursesPage = () => {
   return (
     <RootLayout>
-      <div>CoursesPage</div>
+      <Courses />
     </RootLayout>
   );
 };

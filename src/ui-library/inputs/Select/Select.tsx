@@ -1,3 +1,4 @@
+"use client";
 import imageCheck from "@/assets/icons/arrow-down.svg";
 import { renderInputError } from "@/common/helpers/renderInputError";
 import { useOnClickOutside } from "@/common/hooks";
