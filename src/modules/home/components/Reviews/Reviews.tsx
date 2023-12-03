@@ -1,5 +1,5 @@
 "use client";
-import Carousel from "@/common/components/Carousel/Carousel";
+import { Carousel } from "@/common/components/carousels";
 import { FC } from "react";
 import "swiper/css";
 import { Autoplay, EffectCoverflow } from "swiper/modules";
@@ -14,7 +14,7 @@ const Reviews: FC<IReviews> = (props) => {
     return reviews.map((item) => (
       <SwiperSlide key={item.id}>
         <Card>
-          <ImageReview src={item.image} alt='review' />
+          <ImageReview src={item.image} alt="review" />
           <Column>
             <Name>{item.name}</Name>
             <Comment>{item.comment}</Comment>

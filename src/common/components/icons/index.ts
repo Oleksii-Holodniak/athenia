@@ -1,3 +1,4 @@
+export { default as IconLogout } from "./IconLogout";
 export { default as IconInstagram } from "./social/IconInstagram";
 export { default as IconPinterest } from "./social/IconPinterest";
 export { default as IconTwitter } from "./social/IconTwitter";

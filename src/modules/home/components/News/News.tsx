@@ -1,7 +1,7 @@
 "use client";
 
-import Carousel from "@/common/components/Carousel/Carousel";
-import { BASE_COVERFLOW_CONFIG } from '@/common/constants/general';
+import Carousel from "@/common/components/carousels/Carousel/Carousel";
+import { BASE_COVERFLOW_CONFIG } from "@/common/constants/general";
 import { FC } from "react";
 import "swiper/css";
 import { Autoplay } from "swiper/modules";
