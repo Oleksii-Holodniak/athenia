@@ -10,9 +10,10 @@ export const Wrapper = styled.header`
   position: fixed;
   top: 0;
   left: 0;
-  background-color: #f1efe3d7;
+  background-color: #ffffffc0;
   backdrop-filter: blur(4px);
   z-index: 1000;
+  box-shadow: 0px 0px 20px -10px #00000052;
 `;
 
 export const Container = styled.div`

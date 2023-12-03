@@ -3,8 +3,14 @@ import { Interpolation } from "styled-components";
 export interface ITheme {
   colors: {
     primary: {
-      // main
-      main0: string;
+      gold700: string;
+      gold600: string;
+      gold300: string;
+      gold200: string;
+      gold100: string;
+      gold10: string;
+
+      main: string;
       main10: string;
       main25: string;
       main50: string;

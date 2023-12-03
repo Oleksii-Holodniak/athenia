@@ -27,3 +27,7 @@ export interface IResponse {
   status: number;
   message: string;
 }
+
+export interface IActiveble {
+  isActive: boolean;
+}
