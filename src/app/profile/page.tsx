@@ -1,5 +1,5 @@
 import { RootLayout } from "@/common/layouts";
-import Profile from "@/modules/profile/page";
+import Profile from "@/modules/profile/Profile";
 
 const ProfilePage = () => {
   return (
