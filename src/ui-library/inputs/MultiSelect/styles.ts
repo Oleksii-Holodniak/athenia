@@ -4,7 +4,6 @@ export const Wrapper = styled.div`
   ${({ theme }) => theme.flex.column};
   position: relative;
   gap: 4px;
-  min-height: 87px;
 `;
 
 export const Label = styled.label`
