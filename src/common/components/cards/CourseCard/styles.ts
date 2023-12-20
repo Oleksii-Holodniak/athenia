@@ -5,6 +5,17 @@ export const Wrapper = styled.div`
   width: 100%;
   height: 100%;
   padding: 24px 0 0 24px;
+  cursor: pointer;
+  @media (hover: hover) {
+    &:hover {
+      .preview {
+        transform: scale(1.05);
+      }
+      .container {
+        box-shadow: 0px 0px 20px -5px #10101065;
+      }
+    }
+  }
 `;
 
 export const Container = styled.div`
@@ -14,6 +25,7 @@ export const Container = styled.div`
   box-shadow: 0px 0px 20px -10px #10101065;
   border-radius: 12px;
   position: relative;
+  transition: all 0.4s ease;
 `;
 
 export const Glossiness = styled.div`
@@ -33,6 +45,7 @@ export const Preview = styled(Image)`
   position: relative;
   object-fit: cover;
   z-index: -1;
+  transition: all 0.4s ease;
 `;
 
 export const Social = styled.div`
