@@ -7,7 +7,6 @@ export const Wrapper = styled.div`
   width: 100%;
   padding: 10px;
   background-color: #f4f4f4b9;
-  margin-top: 120px;
 `;
 
 export const Warrior = styled(Image)`

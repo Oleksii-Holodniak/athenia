@@ -1,28 +1,31 @@
+import { mocksCourses } from "@/mocks/courses";
 import {
   Awards,
   Categories,
   Introduction,
   News,
   Quote,
-  Reviews,
   TheBest,
 } from "./components";
-import { awards, categories, comments, mockCourse, theBest } from "./data";
-import { Container, Wrapper } from "./styles";
+import { awards, categories, theBest } from "./data";
+import { Container, Full, Wrapper } from "./styles";
 
 const Home = () => {
   return (
     <>
       <Wrapper>
         <Introduction />
-        <News courses={mockCourse} />
-        <TheBest items={theBest} />
-        <Awards awards={awards} />
+        <News courses={mocksCourses} />
+      </Wrapper>
+      <Full>
+        <Quote />
+      </Full>
+      <Wrapper>
         <Categories categories={categories} />
+        <TheBest items={theBest} />
       </Wrapper>
       <Container>
-        <Quote />
-        <Reviews reviews={comments} />
+        <Awards awards={awards} />
       </Container>
     </>
   );

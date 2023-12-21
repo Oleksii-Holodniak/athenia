@@ -130,6 +130,6 @@ export const Tab = styled.button<IActiveble>`
 export const CardList = styled.div`
   width: 100%;
   display: grid;
-  grid-gap: 24px;
-  grid-template-columns: repeat(3, calc(33.3% - 16px));
+  gap: 38px;
+  grid-template-columns: repeat(3, calc(33.3% - 25px));
 `;

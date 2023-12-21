@@ -1,5 +1,5 @@
 import { ICourse } from "@/common/types/models";
 
-export interface INewsProps {
+export interface ICoursesPage {
   courses: ICourse[];
 }

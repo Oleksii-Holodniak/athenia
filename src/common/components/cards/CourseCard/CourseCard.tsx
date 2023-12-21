@@ -1,42 +1,43 @@
-import imageFacebook from "@/assets/icons/social/facebook.svg";
-import imageInstagram from "@/assets/icons/social/instagram.svg";
-import imageTelegram from "@/assets/icons/social/telegram.svg";
-import imageFace from "@/assets/images/categories/6.webp";
-import Image from "next/image";
+import { LINK_TEMPLATES } from "@/common/constants/links";
+import { useRouter } from "next/navigation";
+import { FC } from "react";
 import {
   Container,
   Description,
   Glossiness,
   Information,
   Preview,
-  Social,
+  TagList,
+  Tags,
   Title,
   Wrapper,
 } from "./styles";
+import { ICourseComponent } from "./types";
 
-const CourseCard = () => {
+const CourseCard: FC<ICourseComponent> = (props) => {
+  const { info, id, tags } = props.course;
+  const { push } = useRouter();
+
+  const renderTags = () => {
+    return tags.map((tag, id) => <Tags key={id}>{tag}</Tags>);
+  };
+
   return (
-    <Wrapper>
-      <Container>
+    <Wrapper onClick={() => push(LINK_TEMPLATES.COURSE_DETAILS(id))}>
+      <Container className="container">
         <Glossiness>
-          <Preview src={imageFace} alt="preview" />
+          <Preview
+            src={info.image}
+            alt="preview"
+            className="preview"
+            width={400}
+            height={300}
+          />
         </Glossiness>
-        <Social>
-          <Image src={imageFacebook} alt="facebook" />
-          <Image src={imageInstagram} alt="instagram" />
-          <Image src={imageTelegram} alt="telegram" />
-        </Social>
         <Information>
-          <Title>Super History Course </Title>
-          <Description>
-            Glossy Paper Brand Psd Mockup | Pixeden Club Pixeden Glossy Paper
-            Brand Psd Mockup | Pixeden Club UI Design: Glossy Buttons with CSS3
-            Gradient - Hongkiat Hongkiat UI Design: Glossy Buttons with CSS3
-            Gradient - Hongkiat Trending Resources tagged as glossy | Figma
-            Community Figma Trending Resources tagged as glossy | Figma
-            Community CSS Button Shine Hover Effect CodePen CSS Button Shine
-            Hover Effect css-effects · GitHub Topics · GitHub GitH{" "}
-          </Description>
+          <Title>{info.name}</Title>
+          <Description>{info.description}</Description>
+          <TagList>{renderTags()}</TagList>
         </Information>
       </Container>
     </Wrapper>

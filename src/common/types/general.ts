@@ -1,16 +1,5 @@
-import { StaticImageData } from "next/image";
 import { FieldError, Merge } from "react-hook-form";
 
-export interface ICourse {
-  id: number;
-  owner: number;
-  info: {
-    image: string | StaticImageData;
-    name: string;
-    description: string;
-    price: number;
-  };
-}
 export type TErrorForm =
   | FieldError
   | Merge<FieldError, (FieldError | undefined)[]>;
@@ -22,6 +11,8 @@ export interface IOption {
   value: string;
   id: number;
 }
+
+export type TSocialMediaType = "telegram" | "facebook" | "instagram";
 
 export interface IResponse {
   status: number;
