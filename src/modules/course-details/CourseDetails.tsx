@@ -1,9 +1,7 @@
-import imageFacebook from "@/assets/icons/social/facebook.svg";
-import imageInstagram from "@/assets/icons/social/instagram.svg";
-import imageTelegram from "@/assets/icons/social/telegram.svg";
-import imageFace from "@/assets/images/categories/6.webp";
-
+"use client";
+import { getMediaType } from "@/common/helpers/media";
 import Image from "next/image";
+import { FC } from "react";
 import { EmptyState } from "./components";
 import {
   Banner,
@@ -14,33 +12,39 @@ import {
   Information,
   Paragraph,
   Social,
+  TagList,
+  Tags,
   Title,
   Wrapper,
 } from "./styles";
+import { ICoursesDetailsProps } from "./types";
 
-const CourseDetails = () => {
+const CourseDetails: FC<ICoursesDetailsProps> = (props) => {
+  const { info, media, owner, tags } = props.course;
+
+  const renderMedia = () => {
+    return media.map((media, id) => (
+      <a key={id} href={media.link}>
+        <Image src={getMediaType(media.name)} alt="facebook" />
+      </a>
+    ));
+  };
+
+  const renderTags = () => {
+    return tags.map((tag, id) => <Tags key={id}>{tag}</Tags>);
+  };
+
   return (
     <Wrapper>
       <Head>
         <Banner>
-          <ImageCourse src={imageFace} alt="course" />
+          <ImageCourse src={info.image} alt="course" width={400} height={800} />
           <Information>
-            <Title>Super History Course </Title>
-            <Paragraph>
-              Glossy Paper Brand Psd Mockup | Pixeden Club Pixeden Glossy Paper
-              Brand Psd Mockup | Pixeden Club UI Design: Glossy Buttons with
-              CSS3 Gradient - Hongkiat Hongkiat UI Design: Glossy Buttons with
-              CSS3 Gradient - Hongkiat Trending Resources tagged as glossy |
-              Figma Community Figma Trending Resources tagged as glossy | Figma
-              Community CSS Button Shine Hover Effect CodePen CSS Button Shine
-              Hover Effect css-effects · GitHub Topics · GitHub GitH{" "}
-            </Paragraph>
+            <Title>{info.name}</Title>
+            <Paragraph>{info.description}</Paragraph>
+            <TagList>{renderTags()}</TagList>
           </Information>
-          <Social>
-            <Image src={imageFacebook} alt="facebook" />
-            <Image src={imageInstagram} alt="instagram" />
-            <Image src={imageTelegram} alt="telegram" />
-          </Social>
+          <Social>{renderMedia()}</Social>
         </Banner>
       </Head>
       <Content>

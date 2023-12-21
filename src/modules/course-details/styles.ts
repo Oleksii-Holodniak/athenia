@@ -61,11 +61,27 @@ export const Paragraph = styled.p``;
 
 export const Social = styled.div`
   ${({ theme }) => theme.flex.column};
-  justify-content: center;
+  justify-content: flex-start;
   height: 100%;
   gap: 24px;
   img {
     width: 40px;
     height: 40px;
   }
+`;
+
+export const TagList = styled.div`
+  ${({ theme }) => theme.flex.row};
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 8px;
+`;
+
+export const Tags = styled.div`
+  background-color: ${({ theme }) => theme.colors.primary.gray300};
+  color: ${({ theme }) => theme.colors.primary.gray800};
+  padding: 2px 6px;
+  font-size: 12px;
+  white-space: nowrap;
+  border-radius: 4px;
 `;

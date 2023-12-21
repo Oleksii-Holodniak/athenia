@@ -1,8 +1,4 @@
-import imageFacebook from "@/assets/icons/social/facebook.svg";
-import imageInstagram from "@/assets/icons/social/instagram.svg";
-import imageTelegram from "@/assets/icons/social/telegram.svg";
 import { LINK_TEMPLATES } from "@/common/constants/links";
-import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { FC } from "react";
 import {
@@ -11,30 +7,37 @@ import {
   Glossiness,
   Information,
   Preview,
-  Social,
+  TagList,
+  Tags,
   Title,
   Wrapper,
 } from "./styles";
 import { ICourseComponent } from "./types";
 
 const CourseCard: FC<ICourseComponent> = (props) => {
-  const { bgColor, info, id, tags } = props.course;
+  const { info, id, tags } = props.course;
   const { push } = useRouter();
+
+  const renderTags = () => {
+    return tags.map((tag, id) => <Tags key={id}>{tag}</Tags>);
+  };
 
   return (
     <Wrapper onClick={() => push(LINK_TEMPLATES.COURSE_DETAILS(id))}>
       <Container className="container">
         <Glossiness>
-          <Preview src={info.image} alt="preview" className="preview" />
+          <Preview
+            src={info.image}
+            alt="preview"
+            className="preview"
+            width={400}
+            height={300}
+          />
         </Glossiness>
-        <Social onClick={(e) => e.stopPropagation()}>
-          <Image src={imageFacebook} alt="facebook" />
-          <Image src={imageInstagram} alt="instagram" />
-          <Image src={imageTelegram} alt="telegram" />
-        </Social>
         <Information>
           <Title>{info.name}</Title>
           <Description>{info.description}</Description>
+          <TagList>{renderTags()}</TagList>
         </Information>
       </Container>
     </Wrapper>

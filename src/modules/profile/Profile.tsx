@@ -4,6 +4,7 @@ import { BackgroundAnimation } from "@/common/components/animated-blocks";
 import { CourseCard } from "@/common/components/cards";
 import { IconLogout } from "@/common/components/icons";
 import { useUser } from "@/common/contexts";
+import { mocksCourses } from "@/mocks/courses";
 import { UserService } from "@/services/general";
 import { useState } from "react";
 import {
@@ -41,7 +42,11 @@ const Profile = () => {
         {tab}
       </Tab>
     ));
-
+  const renderCourses = () => {
+    return mocksCourses.map((course) => (
+      <CourseCard course={course} key={course.id} />
+    ));
+  };
   return (
     <Wrapper>
       <UserHead>
@@ -58,12 +63,7 @@ const Profile = () => {
       </UserHead>
       <Container>
         <TabList>{renderTabs()}</TabList>
-        <CardList>
-          <CourseCard />
-          <CourseCard />
-          <CourseCard />
-          <CourseCard />
-        </CardList>
+        <CardList>{renderCourses()}</CardList>
       </Container>
     </Wrapper>
   );

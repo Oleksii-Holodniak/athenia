@@ -15,7 +15,6 @@ export interface IMedia {
 export interface ICourse {
   id: string;
   owner: number;
-  bgColor: string;
   tags: string[];
   media: IMedia[];
   info: {
