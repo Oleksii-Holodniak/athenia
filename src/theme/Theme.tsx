@@ -8,7 +8,14 @@ import { ITheme } from "./types";
 export const config: ITheme = {
   colors: {
     primary: {
-      main0: "#ffffff",
+      gold700: "#ebb402",
+      gold600: "#f0dd0c",
+      gold300: "#F8DE22",
+      gold200: "#ffff00",
+      gold100: "#fdfd16",
+      gold10: "#fff7dd",
+
+      main: "#ffffff",
       main10: "#F9FCFF",
       main25: "#F5FAFF",
       main50: "#EFF7FF",

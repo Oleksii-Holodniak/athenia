@@ -1,9 +1,17 @@
 import { RootLayout } from "@/common/layouts";
+import { ICourse } from "@/common/types/models";
+import { mocksCourses } from "@/mocks/courses";
+import Courses from "@/modules/courses/Courses";
 
-const CoursesPage = () => {
+const getCourses = async (): Promise<{ courses: ICourse[] }> => {
+  return { courses: mocksCourses };
+};
+
+const CoursesPage = async () => {
+  const { courses } = await getCourses();
   return (
     <RootLayout>
-      <div>CoursesPage</div>
+      <Courses courses={courses} />
     </RootLayout>
   );
 };

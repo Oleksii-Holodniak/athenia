@@ -1,3 +1,4 @@
+"use client";
 import imageEyeOff from "@/assets/icons/eye-off.svg";
 import imageEye from "@/assets/icons/eye.svg";
 import { renderInputError } from "@/common/helpers/renderInputError";

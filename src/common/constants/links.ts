@@ -14,4 +14,7 @@ export const LINK_TEMPLATES = {
   COURSES: () => {
     return `/courses`;
   },
+  COURSE_DETAILS: (id: string | number) => {
+    return `/courses/${id}`;
+  },
 };

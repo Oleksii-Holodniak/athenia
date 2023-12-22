@@ -7,7 +7,7 @@ export const Wrapper = styled.div`
   overflow: hidden;
   box-shadow: 0px 2px 4px -2px rgba(16, 24, 40, 0.06),
     0px 4px 8px -2px rgba(16, 24, 40, 0.1);
-  height: auto;
+  height: 100%;
   transition: all 0.3s ease;
   @media (hover: hover) {
     &:hover {

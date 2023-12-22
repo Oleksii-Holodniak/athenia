@@ -4,10 +4,16 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   ${({ theme }) => theme.flex.column}
-  gap: 120px;
+  padding-top: 120px;
+`;
+
+export const Full = styled.div`
+  padding: 120px 0;
+  width: 100%;
 `;
 
 export const Wrapper = styled(Container)`
+  gap: 120px;
   ${({ theme }) => theme.content.sizing}
 `;
 
