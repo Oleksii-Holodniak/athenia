@@ -16,7 +16,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: "18"
+          node-version: "20"
 
       - name: Create env file
         run: |
@@ -49,8 +49,8 @@ jobs:
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > key.pem
           chmod 400 key.pem
           ssh -i key.pem ${{secrets.USERNAME}}@${{secrets.HOST_DNS}} -p 22
-          export PATH=$PATH:/home/ubuntu/.nvm/versions/node/v18.18.2/bin
-          cd /home/ubuntu/athenia/
+          export PATH=$PATH:/home/ubuntu/.nvm/versions/node/v20.9.0/bin
           pm2 kill
+          cd /home/ubuntu/athenia/
           pm2 start npm --name "athenia-front" -- start -- --port 3000
           '
