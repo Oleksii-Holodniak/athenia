@@ -1,12 +1,5 @@
 import { mocksCourses } from "@/mocks/courses";
-import {
-  Awards,
-  Categories,
-  Introduction,
-  News,
-  Quote,
-  TheBest,
-} from "./components";
+import { Awards, Categories, News, Quote, TheBest } from "./components";
 import { awards, categories, theBest } from "./data";
 import { Container, Full, Wrapper } from "./styles";
 
@@ -14,7 +7,7 @@ const Home = () => {
   return (
     <>
       <Wrapper>
-        <Introduction />
+        {/* <Introduction /> */}
         <News courses={mocksCourses} />
       </Wrapper>
       <Full>
