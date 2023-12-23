@@ -14,7 +14,7 @@ const Home = () => {
   return (
     <>
       <Wrapper>
-        {/* <Introduction /> */}
+        <Introduction />
         <News courses={mocksCourses} />
       </Wrapper>
       <Full>
