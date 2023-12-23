@@ -1,11 +1,11 @@
-import { RootLayout } from "@/common/layouts";
+import { BaseLayout } from "@/common/layouts";
 import Home from "@/modules/home/Home";
 
 const HomePage = () => {
   return (
-    <RootLayout>
+    <BaseLayout>
       <Home />
-    </RootLayout>
+    </BaseLayout>
   );
 };
 

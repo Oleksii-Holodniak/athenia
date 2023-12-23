@@ -1,4 +1,4 @@
-import { UserProvider } from "@/common/contexts";
+import { InitUserSync } from "@/common/store/user/InitUserSync";
 import { IUser } from "@/common/types/models";
 import StyledComponentsRegistry from "@/lib/registry";
 import "@/styles/globals.css";
@@ -61,9 +61,8 @@ export default async function RootLayout({
     <html lang="en" className={`${greece.variable} ${nunito.variable}`}>
       <body>
         <StyledComponentsRegistry>
-          <UserProvider initUser={user}>
-            <Theme>{children}</Theme>
-          </UserProvider>
+          <InitUserSync user={user} isAuthorized={!!user?.email} />
+          <Theme>{children}</Theme>
         </StyledComponentsRegistry>
       </body>
     </html>

@@ -2,11 +2,9 @@
 import { getMediaType } from "@/common/helpers/media";
 import Image from "next/image";
 import { FC } from "react";
-import { EmptyState } from "./components";
 import {
   Banner,
   Content,
-  ContentItem,
   Head,
   ImageCourse,
   Information,
@@ -48,7 +46,7 @@ const CourseDetails: FC<ICoursesDetailsProps> = (props) => {
         </Banner>
       </Head>
       <Content>
-        <ContentItem>
+        {/* <ContentItem>
           <Title>Materials</Title>
           <EmptyState type="materials" />
         </ContentItem>
@@ -59,7 +57,7 @@ const CourseDetails: FC<ICoursesDetailsProps> = (props) => {
         <ContentItem>
           <Title>Tests</Title>
           <EmptyState type="exams" />
-        </ContentItem>
+        </ContentItem> */}
       </Content>
     </Wrapper>
   );

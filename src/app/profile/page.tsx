@@ -1,11 +1,11 @@
-import { RootLayout } from "@/common/layouts";
+import { BaseLayout } from "@/common/layouts";
 import Profile from "@/modules/profile/Profile";
 
 const ProfilePage = () => {
   return (
-    <RootLayout>
+    <BaseLayout>
       <Profile />
-    </RootLayout>
+    </BaseLayout>
   );
 };
 

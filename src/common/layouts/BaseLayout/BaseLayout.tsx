@@ -1,9 +1,8 @@
-import { FC } from "react";
+import { FC, PropsWithChildren } from "react";
 import { Footer, Header } from "./components";
-import { IBaseLayout } from "./interfaces";
 import { Container } from "./styles";
 
-const Layout: FC<IBaseLayout> = ({ children }) => (
+const BaseLayout: FC<PropsWithChildren> = ({ children }) => (
   <>
     <Header />
     <Container>{children}</Container>
@@ -11,4 +10,4 @@ const Layout: FC<IBaseLayout> = ({ children }) => (
   </>
 );
 
-export default Layout;
+export default BaseLayout;
