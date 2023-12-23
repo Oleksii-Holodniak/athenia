@@ -1,4 +1,4 @@
-import { RootLayout } from "@/common/layouts";
+import { BaseLayout } from "@/common/layouts";
 import { ICourse } from "@/common/types/models";
 import { mocksCourses } from "@/mocks/courses";
 import Courses from "@/modules/courses/Courses";
@@ -10,9 +10,9 @@ const getCourses = async (): Promise<{ courses: ICourse[] }> => {
 const CoursesPage = async () => {
   const { courses } = await getCourses();
   return (
-    <RootLayout>
+    <BaseLayout>
       <Courses courses={courses} />
-    </RootLayout>
+    </BaseLayout>
   );
 };
 

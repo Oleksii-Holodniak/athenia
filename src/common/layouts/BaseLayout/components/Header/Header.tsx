@@ -1,7 +1,7 @@
 "use client";
 import imageLogo from "@/assets/images/favicon.png";
 import { LINK_TEMPLATES } from "@/common/constants/links";
-import { useUser } from "@/common/contexts";
+import { useUserStore } from "@/common/store/user";
 import { Button } from "@/ui-library/buttons";
 import { useRouter } from "next/navigation";
 import { navigation } from "./data";
@@ -17,7 +17,8 @@ import {
 
 const Header = () => {
   const { push } = useRouter();
-  const { user } = useUser();
+  // const { user } = useUser();
+  const user = useUserStore((state) => state.user);
 
   const renderNavigations = () => {
     return navigation.map((item) => (

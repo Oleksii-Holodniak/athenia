@@ -1,4 +1,4 @@
-import { RootLayout } from "@/common/layouts";
+import { BaseLayout } from "@/common/layouts";
 import { ICourse } from "@/common/types/models";
 import { mocksCourses } from "@/mocks/courses";
 import CourseDetails from "@/modules/course-details/CourseDetails";
@@ -12,9 +12,9 @@ const getCourseByQuery = async (id: number): Promise<ICourse> => {
 const DetailsPage: NextPage<ICoursesDetailsPageProps> = async ({ params }) => {
   const courseData = await getCourseByQuery(params.id);
   return (
-    <RootLayout>
+    <BaseLayout>
       <CourseDetails course={courseData} />
-    </RootLayout>
+    </BaseLayout>
   );
 };
 
