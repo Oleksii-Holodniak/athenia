@@ -52,5 +52,5 @@ jobs:
           export PATH=$PATH:/home/ubuntu/.nvm/versions/node/v18.18.2/bin
           pm2 kill
           cd /home/ubuntu/athenia/
-          pm2 start npm --name "athenia-front" -- start -- --port 3000
+          pm2 start npm --interpreter=/home/ubuntu/.nvm/versions/node/v18.18.2/bin/node --name "athenia-front" -- start -- --port 3000
           '
