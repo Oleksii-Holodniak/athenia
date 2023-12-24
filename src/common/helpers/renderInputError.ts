@@ -10,9 +10,9 @@ export const renderInputError = (hasError: TErrorForm | IErrorForm) => {
     case "less-date":
       return "The date must be greater than or equal to the current date.";
     case "minLength":
-      return `Password must contain at least ${hasError?.message} letters`;
+      return hasError?.message;
     case "maxLength":
-      return `Maximum field length: ${hasError?.message} characters`;
+      return hasError?.message;
     case "max":
       return `Maximum value: ${hasError?.message}`;
     case "min":

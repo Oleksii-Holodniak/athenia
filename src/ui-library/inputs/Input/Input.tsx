@@ -8,16 +8,30 @@ import { Component, Container, Icon, Label, Message, Wrapper } from "./styles";
 import { IInput } from "./types";
 
 const Input = forwardRef<HTMLInputElement, IInput>((props, ref) => {
-  const { message, error, type = "text", label, endIcon, ...rest } = props;
+  const {
+    message,
+    error,
+    type = "text",
+    label,
+    endIcon,
+    startIcon,
+    ...rest
+  } = props;
 
   const [isOpen, setIsOpen] = useState<boolean>(false);
   return (
     <Wrapper>
       {label && <Label>{label}</Label>}
       <Container>
+        {!!startIcon && (
+          <Icon type={"button"} className="end-icon" position="left">
+            {startIcon}
+          </Icon>
+        )}
         <Component
           {...rest}
           error={error}
+          startIcon={startIcon}
           ref={ref}
           type={isOpen ? "text" : type}
           aria-invalid={!!error}
@@ -27,6 +41,7 @@ const Input = forwardRef<HTMLInputElement, IInput>((props, ref) => {
             onClick={() => setIsOpen(!isOpen)}
             type={"button"}
             className="end-icon"
+            position="right"
           >
             {isOpen ? (
               <Image src={imageEye} alt={"image eye"} />
@@ -36,7 +51,7 @@ const Input = forwardRef<HTMLInputElement, IInput>((props, ref) => {
           </Icon>
         )}
         {!!endIcon && (
-          <Icon type={"button"} className="end-icon">
+          <Icon type={"button"} className="end-icon" position="right">
             <Image src={endIcon} alt={"image eye"} />
           </Icon>
         )}

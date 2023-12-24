@@ -44,7 +44,10 @@ const Login = () => {
         type={"password"}
         {...register("password", {
           required: true,
-          minLength: { message: "8", value: 8 },
+          minLength: {
+            message: `Password must contain at least 8 letters`,
+            value: 8,
+          },
         })}
         error={errors.password}
       />
