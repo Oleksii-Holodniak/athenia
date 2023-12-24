@@ -1,15 +1,13 @@
-import { IError, IOption } from "@/common/types/general";
+import { IError, IOpenable, IOption } from "@/common/types/general";
 import { Dispatch, SetStateAction } from "react";
+import { ICustomTagComponent } from "../../types";
 
-export interface IInput extends IOpenable, IError {
-  options: IOption[];
+export interface IInputProps<T> extends IOpenable, IError {
+  options: IOption<T>[];
   setIsOpen: Dispatch<SetStateAction<boolean>>;
   numbers: number;
   placeholder?: string;
   onClean: () => void;
-  onRemove: (id: number) => void;
-}
-
-export interface IOpenable {
-  isOpen: boolean;
+  onRemove: (id: number | string) => void;
+  CustomTag?: ICustomTagComponent<T>;
 }

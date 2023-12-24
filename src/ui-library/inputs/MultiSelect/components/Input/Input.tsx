@@ -1,6 +1,6 @@
 import imageCheck from "@/assets/icons/arrow-down.svg";
+import { TSelectOptionGenericType } from "@/common/types/general";
 import Image from "next/image";
-import { FC } from "react";
 import {
   Close,
   Count,
@@ -10,9 +10,9 @@ import {
   Tags,
   Wrapper,
 } from "./styles";
-import { IInput } from "./types";
+import { IInputProps } from "./types";
 
-const Input: FC<IInput> = (props) => {
+const Input = <T extends TSelectOptionGenericType>(props: IInputProps<T>) => {
   const {
     options,
     setIsOpen,
@@ -22,21 +22,33 @@ const Input: FC<IInput> = (props) => {
     onClean,
     onRemove,
     error,
+    CustomTag,
   } = props;
 
-  const renderOptions = () => {
-    return options.map((option) => (
-      <Tag key={option.id} onClick={(e) => e.stopPropagation()}>
-        {option.value}
-        <Close type={"button"} onClick={() => onRemove(option.id)} />
-      </Tag>
-    ));
+  const renderTags = () => {
+    return options.map((item) => {
+      if (typeof CustomTag === "function") {
+        return (
+          <CustomTag
+            item={item}
+            onClick={() => onRemove(item.id)}
+            key={item.id}
+          />
+        );
+      }
+      return (
+        <Tag key={item.id} onClick={(e) => e.stopPropagation()}>
+          {item.label}
+          <Close type={"button"} onClick={() => onRemove(item.id)} />
+        </Tag>
+      );
+    });
   };
 
   return (
-    <Wrapper onClick={() => setIsOpen(!isOpen)} error={error}>
+    <Wrapper onClick={() => setIsOpen((prev) => !prev)} error={error}>
       {!!options.length ? (
-        <Tags>{renderOptions()}</Tags>
+        <Tags>{renderTags()}</Tags>
       ) : (
         <span>{placeholder}</span>
       )}

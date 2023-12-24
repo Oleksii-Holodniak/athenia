@@ -14,6 +14,7 @@ export const UserService = {
 
 export const CoursesService = {
   async getCourses() {
-    return mocksCourses;
+    const data = await axios.post("/course");
+    return data;
   },
 };

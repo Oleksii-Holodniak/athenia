@@ -1,10 +1,11 @@
+import { TSelectOptionGenericType } from "@/common/types/general";
 import { CheckBox } from "@/ui-library/checkboxs";
-import { FC, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Row } from "./styles";
-import { IRow } from "./types";
+import { IOptionProps } from "./types";
 
-const Option: FC<IRow> = (props) => {
-  const { item, onAdd, onRemove, tags } = props;
+const Option = <T extends TSelectOptionGenericType>(props: IOptionProps<T>) => {
+  const { item, onAdd, onRemove, tags, CustomOption } = props;
   const [isActive, setIsActive] = useState(false);
 
   useEffect(() => {
@@ -13,13 +14,19 @@ const Option: FC<IRow> = (props) => {
 
   const handlerCheck = () => {
     isActive ? onRemove(item.id) : onAdd(item);
-    setIsActive(!isActive);
+    setIsActive((prev) => !prev);
   };
+
+  if (typeof CustomOption === "function") {
+    return (
+      <CustomOption isActive={isActive} item={item} onClick={handlerCheck} />
+    );
+  }
 
   return (
     <Row onClick={handlerCheck}>
       <CheckBox onClick={(e) => e.stopPropagation()} checked={isActive} />
-      <span>{item.value}</span>
+      <span>{item.label}</span>
     </Row>
   );
 };

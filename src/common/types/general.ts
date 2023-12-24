@@ -7,9 +7,10 @@ export type TErrorForm =
 export interface IError {
   error?: TErrorForm;
 }
-export interface IOption {
-  value: string;
-  id: number;
+export interface IOption<T> {
+  value: T;
+  id: number | string;
+  label: string;
 }
 
 export type TSocialMediaType = "telegram" | "facebook" | "instagram";
@@ -22,3 +23,9 @@ export interface IResponse {
 export interface IActiveble {
   isActive: boolean;
 }
+
+export interface IOpenable {
+  isOpen: boolean;
+}
+
+export type TSelectOptionGenericType = string | number | boolean | object;

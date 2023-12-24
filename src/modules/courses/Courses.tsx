@@ -1,12 +1,21 @@
 "use client";
+import { Pagination } from "@/common/components";
 import { CourseCard } from "@/common/components/cards";
-import { Input, MultiSelect } from "@/ui-library/inputs";
-import { FC } from "react";
-import { FiltersBlock, List, Wrapper } from "./styles";
-import { ICoursesPage } from "./types";
+import { useDebounce } from "@/common/hooks";
+import { useCoursesStore } from "@/common/store/courses";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
+import { Banner, Filter } from "./components";
+import { List, Wrapper } from "./styles";
 
-const Courses: FC<ICoursesPage> = (props) => {
-  const { courses } = props;
+const Courses = () => {
+  const { push } = useRouter();
+  const courses = useCoursesStore((state) => state.courses);
+  const filter = useCoursesStore((state) => state.filter);
+  const onChangeFilterFieldHandler = useCoursesStore(
+    (state) => state.onChangeFilterFieldHandler
+  );
+  const debounce = useDebounce(filter);
 
   const renderCourses = () => {
     return courses?.map((course) => (
@@ -14,13 +23,32 @@ const Courses: FC<ICoursesPage> = (props) => {
     ));
   };
 
+  const redirectQuery = async () => {
+    await push(
+      `?page=${debounce.page}&query=${debounce.query}&tags=${debounce.tags.join(
+        ","
+      )}`
+    );
+  };
+
+  useEffect(() => {
+    // TODO: query
+    redirectQuery();
+  }, [debounce.limit, debounce.page, debounce.query, debounce.tags.length]);
+
   return (
     <Wrapper>
-      <FiltersBlock>
-        <Input />
-        <MultiSelect options={[]} placeholder="Choose categories" />
-      </FiltersBlock>
+      <Banner />
+      <Filter />
       <List>{renderCourses()}</List>
+      <Pagination
+        currentPage={filter.page}
+        onPageChange={(page) => {
+          onChangeFilterFieldHandler(page, "page");
+        }}
+        pageSize={12}
+        totalCount={400}
+      />
     </Wrapper>
   );
 };

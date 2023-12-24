@@ -1,6 +1,5 @@
-import { IError } from "@/common/types/general";
+import { IError, IOpenable } from "@/common/types/general";
 import styled, { css } from "styled-components";
-import { IOpenable } from "./types";
 
 export const Wrapper = styled.div<IError>`
   ${({ theme }) => theme.flex.row};
@@ -82,7 +81,7 @@ export const Close = styled.button`
 export const Count = styled.div`
   ${({ theme }) => theme.flex.center};
   border-radius: 5px;
-  background: #1f75cb;
+  background: ${({ theme }) => theme.colors.primary.gold700};
   color: #fff;
   font-size: 14px;
   font-weight: 500;
@@ -99,9 +98,7 @@ export const Count = styled.div`
 `;
 
 export const IndicatorImage = styled.div<IOpenable>`
-  border: 2px solid ${({ theme }) => theme.colors.primary.main600};
   ${({ theme }) => theme.flex.center};
-
   width: 24px;
   height: 24px;
   border-radius: 50%;

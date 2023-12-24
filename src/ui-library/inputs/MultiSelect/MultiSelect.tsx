@@ -1,14 +1,16 @@
-"use client";
-import { FC, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { renderInputError } from "@/common/helpers/renderInputError";
 import { useOnClickOutside } from "@/common/hooks";
-import { IOption } from "@/common/types/general";
+import { IOption, TSelectOptionGenericType } from "@/common/types/general";
 import { Input, Portal } from "./components";
+import { convertToOptions } from "./components/Portal/helpers";
 import { Label, Message, Wrapper } from "./styles";
-import { IMultiSelect } from "./types";
+import { IMultiSelectProps } from "./types";
 
-const MultiSelect: FC<IMultiSelect> = (props) => {
+const MultiSelect = <T extends TSelectOptionGenericType>(
+  props: IMultiSelectProps<T>
+) => {
   const {
     label,
     options,
@@ -17,21 +19,25 @@ const MultiSelect: FC<IMultiSelect> = (props) => {
     error,
     placeholder,
     registerOptions,
+    components,
+    selected,
   } = props;
 
-  const [selectedTags, setSelectedTags] = useState<IOption[]>([]);
+  const [selectedTags, setSelectedTags] = useState<IOption<T>[]>(
+    convertToOptions<T>(options, selected)
+  );
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const refWrapper = useRef<HTMLDivElement>(null);
 
   useOnClickOutside(refWrapper, () => setIsOpen(false));
 
-  const handlerAdd = (item: IOption) => {
+  const handlerAdd = (item: IOption<T>) => {
     if (!selectedTags.includes(item)) {
       setSelectedTags((prev) => [...prev, item]);
     }
   };
 
-  const handlerRemove = (id: number) => {
+  const handlerRemove = (id: string | number) => {
     const index = selectedTags.findIndex((option) => option.id === id);
     if (index !== -1) {
       const newOptions = [...selectedTags];
@@ -46,20 +52,22 @@ const MultiSelect: FC<IMultiSelect> = (props) => {
 
   useEffect(() => {
     if (typeof onChange === "function") {
-      const values: string[] = selectedTags.map((item) => item.value);
+      const values = selectedTags.map((item) => item.value);
       onChange(values);
     }
   }, [selectedTags]);
 
   useEffect(() => {
-    if (isClear) handlerClearAll();
+    if (isClear) {
+      handlerClearAll();
+    }
   }, [isClear]);
 
   return (
     <Wrapper ref={refWrapper}>
       {label && <Label>{label}</Label>}
       <input {...registerOptions} hidden />
-      <Input
+      <Input<T>
         options={selectedTags}
         isOpen={isOpen}
         setIsOpen={setIsOpen}
@@ -68,12 +76,14 @@ const MultiSelect: FC<IMultiSelect> = (props) => {
         onRemove={handlerRemove}
         placeholder={placeholder}
         error={error}
+        CustomTag={components?.Tag}
       />
-      <Portal
+      <Portal<T>
         options={options}
         tags={selectedTags}
         isOpen={isOpen}
         onAdd={handlerAdd}
+        CustomOption={components?.Option}
         onRemove={handlerRemove}
       />
       {error && <Message>{renderInputError(error)}</Message>}

@@ -1,6 +1,6 @@
 import { IError, IOption } from "@/common/types/general";
 
-export interface IBaseInput extends IError {
+export interface IBaseInputProps extends IError {
   value?: string;
   disabled?: boolean;
   name?: string;
@@ -8,6 +8,6 @@ export interface IBaseInput extends IError {
   placeholder?: string;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
-export interface IBaseSelect extends IBaseInput {
-  options: IOption[];
+export interface IBaseSelectProps extends IBaseInputProps {
+  options: IOption<string>[];
 }
