@@ -1,8 +1,8 @@
 import { StaticImageData } from "next/image";
 import { ReactNode } from "react";
-import { IBaseInput } from "../types";
+import { IBaseInputProps } from "../types";
 
-export interface IInput extends IBaseInput {
+export interface IInput extends IBaseInputProps {
   message?: string | ReactNode;
   label?: string;
   type?: "text" | "number" | "password";

@@ -31,7 +31,7 @@ export const Component = styled.input<IInput>`
   }
 
   ${({ startIcon }) =>
-    !!startIcon ? "padding: 12px 32px 12px 36px;" : "padding: 12px 16px;"}
+    !!startIcon ? "padding: 12px 32px 12px 44px;" : "padding: 12px 16px;"}
 
   border-radius: 8px;
   transition: 0.2s ease;
@@ -73,7 +73,7 @@ export const Icon = styled.button<IPosition>`
   height: 100%;
   aspect-ratio: 1 / 1;
   ${({ position }) => `${position}: 0`};
-  transform: translate(-4px, -50%);
+  transform: translate(0, -50%);
   svg {
     path {
       width: 20px;

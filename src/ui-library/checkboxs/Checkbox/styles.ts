@@ -16,7 +16,7 @@ export const Container = styled.label`
 
 export const Input = styled.input<ICheckbox>`
   &:checked ~ .mark {
-    background: ${({ theme }) => theme.colors.primary.main600};
+    background: ${({ theme }) => theme.colors.primary.gold700};
     border: 1.5px solid transparent;
   }
   ${({ error, theme }) =>
@@ -52,7 +52,7 @@ export const CheckMark = styled.span`
   &:not(:disabled) {
     @media (hover: hover) {
       &:hover {
-        border: 1px solid ${({ theme }) => theme.colors.primary.main600};
+        border: 1px solid ${({ theme }) => theme.colors.primary.gold700};
       }
     }
   }

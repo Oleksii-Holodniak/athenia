@@ -1,21 +1,21 @@
 import imageSearch from "@/assets/icons/search.svg";
-import { IOption } from "@/common/types/general";
+import { IOption, TSelectOptionGenericType } from "@/common/types/general";
 import Image from "next/image";
-import { FC, useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Option } from "./components";
 import { List, NotFound, Search, SearchWrapper, Wrapper } from "./styles";
-import { IPortal } from "./types";
+import { IPortalProps } from "./types";
 
-const Portal: FC<IPortal> = (props) => {
-  const { options, isOpen, onAdd, onRemove, tags } = props;
-  const [filteredOptions, setFilteredOptions] = useState<IOption[]>(options);
+const Portal = <T extends TSelectOptionGenericType>(props: IPortalProps<T>) => {
+  const { options, isOpen, onAdd, onRemove, tags, CustomOption } = props;
+  const [filteredOptions, setFilteredOptions] = useState<IOption<T>[]>(options);
   const refInput = useRef<HTMLInputElement>(null);
 
   const handlerChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     if (value) {
       const result = options.filter((option) =>
-        option.value.toLocaleLowerCase().startsWith(value.toLocaleLowerCase())
+        option.label.toLocaleLowerCase().startsWith(value.toLocaleLowerCase())
       );
       setFilteredOptions(result);
     } else {
@@ -29,14 +29,19 @@ const Portal: FC<IPortal> = (props) => {
     }
   }, [isOpen, refInput.current]);
 
+  useEffect(() => {
+    setFilteredOptions(options);
+  }, [options]);
+
   const renderOptions = () => {
     return filteredOptions.map((option) => (
-      <Option
+      <Option<T>
         key={option.id}
         item={option}
         onAdd={onAdd}
         onRemove={onRemove}
         tags={tags}
+        CustomOption={CustomOption}
       />
     ));
   };

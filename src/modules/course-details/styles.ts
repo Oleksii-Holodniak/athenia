@@ -73,7 +73,9 @@ export const Social = styled.div`
 
 export const GetButton = styled(Button)`
   width: fit-content;
+  margin-top: 12px;
 `;
+
 export const TagList = styled.div`
   ${({ theme }) => theme.flex.row};
   flex-wrap: wrap;

@@ -1,29 +1,31 @@
+import { IOpenable } from "@/common/types/general";
 import styled, { css } from "styled-components";
-import { IWrapper } from "./types";
 
-export const Wrapper = styled.div<IWrapper>`
+export const Wrapper = styled.div<IOpenable>`
   border: 1px solid ${({ theme }) => theme.colors.primary.gray200};
-  transition: all 0.2s ease-out;
-
+  box-shadow: 0px 4px 6px -2px rgba(16, 24, 40, 0.03),
+    0px 4px 24px -4px rgba(16, 24, 40, 0.08),
+    0px 4px 6px -2px rgba(16, 24, 40, 0.03),
+    0px 4px 24px -4px rgba(16, 24, 40, 0.08);
   ${({ isOpen }) =>
     !isOpen
       ? css`
           opacity: 0;
           visibility: hidden;
-          transform: translateY(calc(100% - 18px));
+          transform: translateY(calc(100% - 22px));
           pointer-events: none;
         `
       : css`
-          transform: translateY(calc(100% - 12px));
+          transform: translateY(calc(100% - 18px));
         `}
 
+  transition: all 0.2s ease-out;
   position: absolute;
   bottom: 0;
   width: 100%;
   z-index: 3;
   border-radius: 8px;
   background: #fff;
-  box-shadow: 0px 4px 7px 0px rgba(37, 38, 44, 0.1);
   overflow: hidden;
 `;
 

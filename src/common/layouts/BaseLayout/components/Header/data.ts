@@ -12,9 +12,4 @@ export const navigation: INavigation[] = [
     name: "Courses",
     path: LINK_TEMPLATES.COURSES(),
   },
-  {
-    id: 2,
-    name: "Popular",
-    path: "",
-  },
 ];
