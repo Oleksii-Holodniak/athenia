@@ -7,7 +7,7 @@ export const Component = styled.button<IButton>`
   padding: 6px 20px;
   border-radius: 50px;
   transition: all 0.4s ease;
-
+  position: relative;
   ${({ variant }) =>
     variant === "outline"
       ? css`
@@ -17,13 +17,13 @@ export const Component = styled.button<IButton>`
         `
       : css`
           background: rgb(221, 155, 47);
-          text-shadow: 1px 0px 2px rgba(0, 0, 0, 0.6);
+          text-shadow: 1px 0px 2px rgba(0, 0, 0, 0.9);
           background: linear-gradient(
             93deg,
             rgba(221, 155, 47, 1) 0%,
-            rgba(255, 210, 78, 1) 25%,
-            rgba(227, 208, 117, 1) 50%,
-            rgba(255, 210, 78, 1) 75%,
+            rgba(255, 181, 80, 1) 25%,
+            rgba(227, 200, 78, 1) 50%,
+            rgba(255, 181, 80, 1) 75%,
             rgba(221, 155, 47, 1) 100%
           );
           border: 1px solid #fdfefa;

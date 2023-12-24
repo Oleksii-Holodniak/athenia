@@ -1,4 +1,5 @@
 "use client";
+import { Button } from "@/ui-library/buttons";
 import Image from "next/image";
 import styled from "styled-components";
 
@@ -70,6 +71,9 @@ export const Social = styled.div`
   }
 `;
 
+export const GetButton = styled(Button)`
+  width: fit-content;
+`;
 export const TagList = styled.div`
   ${({ theme }) => theme.flex.row};
   flex-wrap: wrap;

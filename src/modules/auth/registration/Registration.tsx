@@ -55,7 +55,10 @@ const Registration = () => {
         placeholder={"Enter Name"}
         {...register("username", {
           required: true,
-          maxLength: 30,
+          maxLength: {
+            message: `Maximum field length: 30 characters`,
+            value: 30,
+          },
         })}
         error={errors.username}
       />
@@ -75,7 +78,10 @@ const Registration = () => {
         type={"password"}
         {...register("password", {
           required: true,
-          minLength: { message: "8", value: 8 },
+          minLength: {
+            message: `Password must contain at least 8 letters`,
+            value: 8,
+          },
         })}
         error={errors.password}
       />
@@ -84,7 +90,10 @@ const Registration = () => {
         type={"password"}
         {...register("confirm_password", {
           required: true,
-          minLength: { message: "8", value: 8 },
+          minLength: {
+            message: `Password must contain at least 8 letters`,
+            value: 8,
+          },
         })}
         error={errors.confirm_password}
       />

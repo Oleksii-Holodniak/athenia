@@ -1,10 +1,12 @@
 "use client";
 import { getMediaType } from "@/common/helpers/media";
 import Image from "next/image";
-import { FC } from "react";
+import { FC, useState } from "react";
+import { GetCourse } from "./components";
 import {
   Banner,
   Content,
+  GetButton,
   Head,
   ImageCourse,
   Information,
@@ -19,6 +21,7 @@ import { ICoursesDetailsProps } from "./types";
 
 const CourseDetails: FC<ICoursesDetailsProps> = (props) => {
   const { info, media, owner, tags } = props.course;
+  const [opened, setOpened] = useState(false);
 
   const renderMedia = () => {
     return media.map((media, id) => (
@@ -41,7 +44,15 @@ const CourseDetails: FC<ICoursesDetailsProps> = (props) => {
             <Title>{info.name}</Title>
             <Paragraph>{info.description}</Paragraph>
             <TagList>{renderTags()}</TagList>
+            <GetButton
+              variant="fill"
+              theme="gold"
+              onClick={() => setOpened(true)}
+            >
+              Get Course
+            </GetButton>
           </Information>
+          <GetCourse onClose={() => setOpened(false)} opened={opened} />
           <Social>{renderMedia()}</Social>
         </Banner>
       </Head>

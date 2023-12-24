@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@types/js-cookie": "^3.0.6",
+    "@types/react-transition-group": "^4.4.10",
     "@types/styled-components": "^5.1.28",
     "axios": "^1.5.1",
     "cookie": "^0.5.0",
@@ -24,6 +25,7 @@
     "react-dom": "latest",
     "react-hook-form": "^7.47.0",
     "react-responsive": "^9.0.2",
+    "react-transition-group": "^4.4.5",
     "react-wavify": "^1.8.0",
     "styled-components": "^6.0.8",
     "swiper": "^10.3.1",
