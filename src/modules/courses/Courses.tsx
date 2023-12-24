@@ -34,7 +34,7 @@ const Courses = () => {
   useEffect(() => {
     // TODO: query
     redirectQuery();
-  }, [debounce.limit, debounce.page, debounce.query, debounce.tags.length]);
+  }, [debounce.limit, debounce.page, debounce.query, debounce.tags?.length]);
 
   return (
     <Wrapper>

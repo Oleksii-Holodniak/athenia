@@ -17,9 +17,9 @@ export const InitCoursesSync: FC<IInitialCoursesProps> = ({
       total,
       filter: {
         ...state.filter,
-        query: params.query,
-        page: +params.page,
-        tags: params.tags.split(","),
+        query: params.query || "",
+        page: +params.page || 1,
+        tags: params.tags ? params.tags?.split(",") : [],
       },
     }));
     initRef.current = true;
