@@ -1,10 +1,12 @@
 "use client";
 import { Pagination } from "@/common/components";
 import { CourseCard } from "@/common/components/cards";
+import { NotFound } from "@/common/components/shared";
 import { useDebounce } from "@/common/hooks";
 import { useCoursesStore } from "@/common/store/courses";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
+import { CourseService } from "./api";
 import { Banner, Filter } from "./components";
 import { List, Wrapper } from "./styles";
 
@@ -13,6 +15,7 @@ const Courses = () => {
   const courses = useCoursesStore((state) => state.courses);
   const total = useCoursesStore((state) => state.total);
   const filter = useCoursesStore((state) => state.filter);
+  const filteredCourses = useCoursesStore((state) => state.filteredCourses);
   const onChangeFilterFieldHandler = useCoursesStore(
     (state) => state.onChangeFilterFieldHandler
   );
@@ -32,16 +35,21 @@ const Courses = () => {
     );
   };
 
-  useEffect(() => {
-    // TODO: query
+  const searchCourses = async () => {
+    const data = await CourseService.searchCourses(debounce);
+    filteredCourses(data.result, data.total);
     redirectQuery();
+  };
+
+  useEffect(() => {
+    searchCourses();
   }, [debounce.limit, debounce.page, debounce.query, debounce.tags?.length]);
 
   return (
     <Wrapper>
       <Banner />
       <Filter />
-      <List>{renderCourses()}</List>
+      <List>{!courses?.length ? <NotFound /> : renderCourses()}</List>
       <Pagination
         currentPage={filter.page}
         onPageChange={(page) => {

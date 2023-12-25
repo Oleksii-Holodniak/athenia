@@ -1,27 +1,31 @@
 "use client";
 import imagePlug from "@/assets/images/empty.png";
 import { getMediaType } from "@/common/helpers/media";
+import { useUserStore } from "@/common/store/user";
 import Image from "next/image";
 import { FC, useState } from "react";
-import { GetCourse } from "./components";
+import { BuyCourse, Forms, NotAllow } from "./components";
 import {
   Banner,
   Content,
-  GetButton,
   Head,
   ImageCourse,
   Information,
   Paragraph,
   Social,
+  TagList,
+  Tags,
   Title,
   Wrapper,
 } from "./styles";
 import { ICoursesDetailsProps } from "./types";
 
 const CourseDetails: FC<ICoursesDetailsProps> = (props) => {
-  const { description, id, price, preview, title, media, owner, tags } =
-    props.course;
+  const { description, id, preview, title, media, owners, tags } = props.course;
   const [opened, setOpened] = useState(false);
+  const isAuthorized = useUserStore((state) => state.isAuthorized);
+  const user = useUserStore((state) => state.user);
+  const IS_OWNER = owners?.some((el) => el.id === user?.id);
 
   const renderMedia = () => {
     return media?.map((media, id) => (
@@ -31,9 +35,9 @@ const CourseDetails: FC<ICoursesDetailsProps> = (props) => {
     ));
   };
 
-  // const renderTags = () => {
-  //   return tags.map((tag, id) => <Tags key={id}>{tag}</Tags>);
-  // };
+  const renderTags = () => {
+    return tags.map((tag, id) => <Tags key={id}>{tag}</Tags>);
+  };
 
   return (
     <Wrapper>
@@ -48,32 +52,18 @@ const CourseDetails: FC<ICoursesDetailsProps> = (props) => {
           <Information>
             <Title>{title}</Title>
             <Paragraph>{description}</Paragraph>
-            {/* <TagList>{renderTags()}</TagList> */}
-            <GetButton
-              variant="fill"
-              theme="gold"
-              onClick={() => setOpened(true)}
-            >
-              Get Course
-            </GetButton>
+            <TagList>{renderTags()}</TagList>
           </Information>
-          <GetCourse onClose={() => setOpened(false)} opened={opened} />
           <Social>{renderMedia()}</Social>
         </Banner>
       </Head>
       <Content>
-        {/* <ContentItem>
-          <Title>Materials</Title>
-          <EmptyState type="materials" />
-        </ContentItem>
-        <ContentItem>
-          <Title>Links</Title>
-          <EmptyState type="links" />
-        </ContentItem>
-        <ContentItem>
-          <Title>Tests</Title>
-          <EmptyState type="exams" />
-        </ContentItem> */}
+        {!IS_OWNER && isAuthorized ? (
+          <BuyCourse setOpened={setOpened} opened={opened} />
+        ) : (
+          <NotAllow />
+        )}
+        {IS_OWNER && <Forms />}
       </Content>
     </Wrapper>
   );

@@ -1,4 +1,5 @@
 export { default as IconClose } from "./IconClose";
+export { default as IconFolderFiles } from "./IconFolderFiles";
 export { default as IconGraduationCap } from "./IconGraduationCap";
 export { default as IconKey } from "./IconKey";
 export { default as IconLogout } from "./IconLogout";

@@ -7,7 +7,7 @@ import { NextPage } from "next";
 
 const getCourses = async (): Promise<IGetCoursesApiResponse | undefined> => {
   try {
-    const res = await fetch(`${process.env.BASE_URL}/course`);
+    const res = await fetch(`${process.env.BASE_URL}/course/search`);
 
     if (res.status === 200) {
       const data = await res.json();

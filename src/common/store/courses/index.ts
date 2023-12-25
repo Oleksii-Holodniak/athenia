@@ -23,6 +23,12 @@ export const useCoursesStore = create<ICoursesStoreProps>()(
           state.filter = { ...state.filter, [name]: value };
         });
       },
+      filteredCourses: (courses, total) => {
+        set((state) => {
+          state.courses = courses;
+          state.total = total;
+        });
+      },
     }))
   )
 );
