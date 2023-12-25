@@ -4,7 +4,7 @@ import { getMediaType } from "@/common/helpers/media";
 import { useUserStore } from "@/common/store/user";
 import Image from "next/image";
 import { FC, useState } from "react";
-import { BuyCourse, Forms, NotAllow } from "./components";
+import { BuyCourse, NotAllow } from "./components";
 import {
   Banner,
   Content,
@@ -48,6 +48,9 @@ const CourseDetails: FC<ICoursesDetailsProps> = (props) => {
             alt="course"
             width={400}
             height={800}
+            onError={(e) => {
+              e.currentTarget.src = imagePlug.src;
+            }}
           />
           <Information>
             <Title>{title}</Title>
@@ -58,12 +61,12 @@ const CourseDetails: FC<ICoursesDetailsProps> = (props) => {
         </Banner>
       </Head>
       <Content>
-        {!IS_OWNER && isAuthorized ? (
+        {isAuthorized ? (
           <BuyCourse setOpened={setOpened} opened={opened} />
         ) : (
           <NotAllow />
         )}
-        {IS_OWNER && <Forms />}
+        {/* {IS_OWNER && <Forms />} */}
       </Content>
     </Wrapper>
   );

@@ -1,6 +1,9 @@
 "use client";
 import { filterOptions } from "@/common/constants/general";
+import { LINK_TEMPLATES } from "@/common/constants/links";
 import { Input, MultiSelect, TextArea } from "@/ui-library/inputs";
+import { useRouter } from "next/navigation";
+import { useSnackbar } from "notistack";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { CoursesService } from "./api";
@@ -21,7 +24,8 @@ const Create = () => {
   });
   const [isSubmitSuccessful, setIsSubmitSuccessful] = useState(false);
   const [file, setFile] = useState<File | null>(null);
-
+  const { enqueueSnackbar } = useSnackbar();
+  const { push } = useRouter();
   const onChangeSelectHandler = (value: string[]) => {
     if (isSubmitted && !isSubmitSuccessful) {
       if (value.length) {
@@ -34,11 +38,24 @@ const Create = () => {
   };
 
   const onSubmit = async (form: ICreateFormValues) => {
-    console.log("form :", form);
     try {
-      const res = await CoursesService.createCourses(form);
-      console.log("res :", res);
-    } catch (error) {}
+      if (file) {
+        const res = await CoursesService.createCourses({
+          ...form,
+          preview: file,
+        });
+        enqueueSnackbar({
+          variant: "success",
+          message: "Successfully created",
+        });
+        await push(LINK_TEMPLATES.COURSES());
+      }
+    } catch (error) {
+      enqueueSnackbar({
+        variant: "error",
+        message: "Something went wrong",
+      });
+    }
   };
 
   return (
