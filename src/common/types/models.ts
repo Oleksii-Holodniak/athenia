@@ -14,14 +14,13 @@ export interface IMedia {
 
 export interface ICourse {
   id: string;
-  owners: IUser[];
-  students: IUser[];
+  owners?: IUser[];
+  students?: IUser[];
   tags: string[];
   media: IMedia[];
   preview: string | StaticImageData;
   title: string;
   description: string;
-  price: number;
 }
 
 export interface IFileUploadModel {

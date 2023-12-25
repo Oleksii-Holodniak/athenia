@@ -21,8 +21,7 @@ import {
 import { ICoursesDetailsProps } from "./types";
 
 const CourseDetails: FC<ICoursesDetailsProps> = (props) => {
-  const { description, id, price, preview, title, media, owners, tags } =
-    props.course;
+  const { description, id, preview, title, media, owners, tags } = props.course;
   const [opened, setOpened] = useState(false);
   const isAuthorized = useUserStore((state) => state.isAuthorized);
   const user = useUserStore((state) => state.user);
