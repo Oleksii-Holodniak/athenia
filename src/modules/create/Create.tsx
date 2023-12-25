@@ -1,30 +1,40 @@
 "use client";
-import { IconKey } from "@/common/components/icons";
 import { filterOptions } from "@/common/constants/general";
-import { generateHash } from "@/common/helpers/hash";
 import { Input, MultiSelect, TextArea } from "@/ui-library/inputs";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { CoursesService } from "./api";
 import { FileUpload } from "./components";
-import { Flex, Form, Row, Submit, Wrapper } from "./styles";
+import { Flex, Form, Submit, Wrapper } from "./styles";
 import { ICreateFormValues } from "./types";
 
 const Create = () => {
   const {
     register,
     handleSubmit,
+    setError,
+    setValue,
+    clearErrors,
     formState: { errors, isSubmitted },
   } = useForm<ICreateFormValues>({
     mode: "onSubmit",
-    defaultValues: {
-      securityCode: generateHash(),
-    },
   });
-
+  const [isSubmitSuccessful, setIsSubmitSuccessful] = useState(false);
   const [file, setFile] = useState<File | null>(null);
 
+  const onChangeSelectHandler = (value: string[]) => {
+    if (isSubmitted && !isSubmitSuccessful) {
+      if (value.length) {
+        clearErrors("tags");
+      } else {
+        setError("tags", { type: "required" });
+      }
+    }
+    setValue("tags", value);
+  };
+
   const onSubmit = async (form: ICreateFormValues) => {
+    console.log("form :", form);
     try {
       const res = await CoursesService.createCourses(form);
       console.log("res :", res);
@@ -56,32 +66,17 @@ const Create = () => {
             })}
             error={errors.description}
           />
-          <Row>
-            <MultiSelect
-              options={filterOptions}
-              placeholder="Choose categories"
-              label="Categories"
-              registerOptions={register("tags")}
-              error={errors.tags}
-            />
-            <Input
-              label="Security code"
-              placeholder="Enter security code"
-              startIcon={<IconKey />}
-              {...register("securityCode", {
-                required: true,
-                minLength: {
-                  message: "Minimum field length: 16 characters",
-                  value: 16,
-                },
-                maxLength: {
-                  message: "Maximum field length: 16 characters",
-                  value: 16,
-                },
-              })}
-              error={errors.securityCode}
-            />
-          </Row>
+          <MultiSelect
+            options={filterOptions}
+            placeholder="Choose categories"
+            label="Categories"
+            registerOptions={register("tags", {
+              required: true,
+            })}
+            error={errors.tags}
+            onChange={(value) => onChangeSelectHandler(value)}
+            isClear={isSubmitSuccessful}
+          />
           <Submit type="submit">Submit</Submit>
         </Form>
       </Flex>

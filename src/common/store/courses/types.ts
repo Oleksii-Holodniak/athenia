@@ -26,4 +26,5 @@ export interface ICoursesStoreProps extends IInitialCoursesStoreProps {
     value: ICoursesFilter[K],
     name: K
   ) => void;
+  filteredCourses: (courses: ICourse[], total: number) => void;
 }

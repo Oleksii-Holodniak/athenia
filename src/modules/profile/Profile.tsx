@@ -43,6 +43,7 @@ const Profile = () => {
         {tab}
       </Tab>
     ));
+
   const renderCourses = () => {
     return mocksCourses.map((course) => (
       <CourseCard course={course} key={course.id} />

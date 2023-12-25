@@ -14,11 +14,22 @@ export interface IMedia {
 
 export interface ICourse {
   id: string;
-  owner: number;
+  owners: IUser[];
+  students: IUser[];
   tags: string[];
   media: IMedia[];
   preview: string | StaticImageData;
   title: string;
   description: string;
   price: number;
+}
+
+export interface IFileUploadModel {
+  fileUrl: string;
+  id: string;
+  mimetype: string;
+  filesize: number;
+  filename: string;
+  authorId: string;
+  parentId: string;
 }

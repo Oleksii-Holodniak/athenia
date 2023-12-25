@@ -3,5 +3,4 @@ export interface ICreateFormValues {
   description: string;
   tags: string[];
   preview: string;
-  securityCode: string;
 }

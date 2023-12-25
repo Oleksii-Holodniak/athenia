@@ -8,6 +8,8 @@ import {
   Glossiness,
   Information,
   Preview,
+  TagList,
+  Tags,
   Title,
   Wrapper,
 } from "./styles";
@@ -17,9 +19,9 @@ const CourseCard: FC<ICourseComponent> = (props) => {
   const { description, title, preview, id, tags } = props.course;
   const { push } = useRouter();
 
-  // const renderTags = () => {
-  //   return tags.map((tag, id) => <Tags key={id}>{tag}</Tags>);
-  // };
+  const renderTags = () => {
+    return tags.map((tag, id) => <Tags key={id}>{tag}</Tags>);
+  };
 
   return (
     <Wrapper onClick={() => push(LINK_TEMPLATES.COURSE_DETAILS(id))}>
@@ -36,7 +38,7 @@ const CourseCard: FC<ICourseComponent> = (props) => {
         <Information>
           <Title>{title}</Title>
           <Description>{description}</Description>
-          {/* <TagList>{renderTags()}</TagList> */}
+          <TagList>{renderTags()}</TagList>
         </Information>
       </Container>
     </Wrapper>
