@@ -9,6 +9,7 @@ export interface IInput extends IBaseInputProps, IErrored {
   endIcon?: StaticImageData;
   startIcon?: ReactNode;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  defaultValue?: string;
 }
 
 export interface IPosition {
