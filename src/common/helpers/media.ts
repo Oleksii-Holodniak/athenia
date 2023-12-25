@@ -14,3 +14,21 @@ export const mediaType: Record<string, StaticImageData> = {
 export const getMediaType = (name: string): StaticImageData => {
   return mediaType[name] || imageMassager;
 };
+
+export function objectToFormData(
+  obj: any,
+  formData = new FormData(),
+  namespace = ""
+) {
+  for (let key in obj) {
+    if (obj.hasOwnProperty(key)) {
+      let formKey = namespace ? `${namespace}[${key}]` : key;
+      if (typeof obj[key] === "object" && !(obj[key] instanceof File)) {
+        objectToFormData(obj[key], formData, formKey);
+      } else {
+        formData.append(formKey, obj[key]);
+      }
+    }
+  }
+  return formData;
+}

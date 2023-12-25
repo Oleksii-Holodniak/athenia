@@ -60,4 +60,7 @@ export const Container = styled.div`
   border-radius: 12px;
   gap: 24px;
   z-index: 2;
+  @media screen and (max-width: 540px) {
+    padding: 24px 16px 28px;
+  }
 `;
