@@ -1,4 +1,3 @@
-import { mocksCourses } from "@/mocks/courses";
 import axios from "@/services/base";
 
 export const UserService = {
@@ -9,12 +8,5 @@ export const UserService = {
 
   async logOut() {
     await axios.post("/auth/logout");
-  },
-};
-
-export const CoursesService = {
-  async getCourses() {
-    const data = await axios.post("/course");
-    return data;
   },
 };

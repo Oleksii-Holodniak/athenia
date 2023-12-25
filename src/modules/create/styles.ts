@@ -1,3 +1,4 @@
+import { Button } from "@/ui-library/buttons";
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
@@ -24,4 +25,8 @@ export const Row = styled.div`
   grid-template-columns: repeat(2, calc(50% - 12px));
   width: 100%;
   gap: 24px;
+`;
+
+export const Submit = styled(Button)`
+  width: 180px;
 `;

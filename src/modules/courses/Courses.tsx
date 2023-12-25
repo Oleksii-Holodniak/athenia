@@ -11,6 +11,7 @@ import { List, Wrapper } from "./styles";
 const Courses = () => {
   const { push } = useRouter();
   const courses = useCoursesStore((state) => state.courses);
+  const total = useCoursesStore((state) => state.total);
   const filter = useCoursesStore((state) => state.filter);
   const onChangeFilterFieldHandler = useCoursesStore(
     (state) => state.onChangeFilterFieldHandler
@@ -46,8 +47,8 @@ const Courses = () => {
         onPageChange={(page) => {
           onChangeFilterFieldHandler(page, "page");
         }}
-        pageSize={12}
-        totalCount={400}
+        pageSize={filter.limit}
+        totalCount={total}
       />
     </Wrapper>
   );

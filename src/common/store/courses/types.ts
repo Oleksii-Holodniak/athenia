@@ -8,9 +8,11 @@ export interface ICoursesFilter {
   tags: string[];
 }
 
-export interface IInitialCoursesProps {
+export interface IGetCoursesApiResponse {
   courses: ICourse[] | null;
   total: number;
+}
+export interface IInitialCoursesProps extends IGetCoursesApiResponse {
   params: ICourseParams;
 }
 
