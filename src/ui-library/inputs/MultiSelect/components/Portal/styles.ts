@@ -1,22 +1,27 @@
 import { IOpenable } from "@/common/types/general";
+import { IErrored } from "@/ui-library/inputs/types";
 import styled, { css } from "styled-components";
 
-export const Wrapper = styled.div<IOpenable>`
+export const Wrapper = styled.div<IOpenable & IErrored>`
   border: 1px solid ${({ theme }) => theme.colors.primary.gray200};
   box-shadow: 0px 4px 6px -2px rgba(16, 24, 40, 0.03),
     0px 4px 24px -4px rgba(16, 24, 40, 0.08),
     0px 4px 6px -2px rgba(16, 24, 40, 0.03),
     0px 4px 24px -4px rgba(16, 24, 40, 0.08);
-  ${({ isOpen }) =>
+  ${({ isOpen, unErrored }) =>
     !isOpen
       ? css`
           opacity: 0;
           visibility: hidden;
-          transform: translateY(calc(100% - 22px));
+          transform: translateY(
+            ${!unErrored ? `calc(100% - 18px)` : `calc(100% + 2px)`}
+          );
           pointer-events: none;
         `
       : css`
-          transform: translateY(calc(100% - 18px));
+          transform: translateY(
+            ${!unErrored ? `calc(100% - 10px)` : `calc(100% + 10px)`}
+          );
         `}
 
   transition: all 0.2s ease-out;

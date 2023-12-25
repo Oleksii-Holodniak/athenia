@@ -1,4 +1,5 @@
 import { IOption } from "@/common/types/general";
+import { IErrored } from "@/ui-library/inputs/types";
 import { ICustomOptionComponent } from "../../types";
 
 export interface IEvent<T> {
@@ -7,7 +8,7 @@ export interface IEvent<T> {
   onRemove: (id: number | string) => void;
 }
 
-export interface IPortalProps<T> extends IEvent<T> {
+export interface IPortalProps<T> extends IEvent<T>, IErrored {
   options: IOption<T>[];
   isOpen: boolean;
   CustomOption?: ICustomOptionComponent<T>;

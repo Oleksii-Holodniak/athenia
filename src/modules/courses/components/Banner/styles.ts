@@ -9,7 +9,6 @@ export const Wrapper = styled.div`
   width: 100%;
   height: 280px;
   border-radius: 8px;
-  margin-bottom: 32px;
   padding: 0 40px;
   gap: 24px;
 `;

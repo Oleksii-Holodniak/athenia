@@ -1,5 +1,7 @@
 import { IError, IOption } from "@/common/types/general";
-
+export interface IErrored {
+  unErrored?: boolean;
+}
 export interface IBaseInputProps extends IError {
   value?: string;
   disabled?: boolean;

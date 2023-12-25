@@ -1,18 +1,19 @@
 import { IError } from "@/common/types/general";
 import styled, { css } from "styled-components";
-import { IErrored } from "../types";
-import { IInput, IPosition } from "./types";
+import { ITextAreaProps, IWrapperProps } from "./types";
 
-export const Wrapper = styled.div<IErrored & { isLabeled: boolean }>`
+export const Wrapper = styled.div<IWrapperProps>`
   ${({ theme }) => theme.flex.column};
-  ${({ isLabeled }) =>
-    !isLabeled ? `min-height: 72px;` : `min-height: 87px;`};
-  ${({ unErrored }) => unErrored && `min-height: 0;`}
+  min-height: ${({ customHeight, unValidate }) =>
+    customHeight ? `${customHeight + (unValidate ? 0 : 52)}px` : "87px"};
   position: relative;
 `;
 
-export const Component = styled.input<IInput>`
+export const Component = styled.textarea<ITextAreaProps>`
+  height: ${({ customHeight }) =>
+    customHeight ? `${customHeight}px` : "auto"};
   color: ${({ theme }) => theme.colors.primary.gray800};
+
   ${({ theme, error }) =>
     error
       ? css`
@@ -33,15 +34,13 @@ export const Component = styled.input<IInput>`
     border: 1px solid ${({ theme }) => theme.colors.primary.gray300};
   }
 
-  ${({ startIcon }) =>
-    !!startIcon ? "padding: 12px 32px 12px 44px;" : "padding: 12px 16px;"}
-
+  resize: none;
   border-radius: 8px;
   transition: 0.2s ease;
-  height: 44px;
+  min-height: 44px;
   background: #fff;
   outline: none;
-
+  padding: 12px 16px;
   font-size: 14px;
   font-weight: 400;
   line-height: 150%;
@@ -64,19 +63,15 @@ export const Message = styled.span<IError>`
   font-weight: 400;
   text-align: right;
 `;
-export const Container = styled.div`
-  position: relative;
-  width: 100%;
-`;
 
-export const Icon = styled.button<IPosition>`
+export const Icon = styled.button`
   ${({ theme }) => theme.flex.center};
   position: absolute;
   top: 50%;
   height: 100%;
   aspect-ratio: 1 / 1;
-  ${({ position }) => `${position}: 0`};
-  transform: translate(0, -50%);
+  right: 0;
+  transform: translate(-4px, -50%);
   svg {
     path {
       width: 20px;

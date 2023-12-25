@@ -11,6 +11,9 @@ export const LINK_TEMPLATES = {
   PROFILE: () => {
     return `/profile`;
   },
+  CREATE: () => {
+    return `/create`;
+  },
   COURSES: () => {
     return `/courses`;
   },

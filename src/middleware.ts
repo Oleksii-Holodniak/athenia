@@ -1,7 +1,7 @@
 import { NextApiResponse } from "next";
 import { NextResponse, type NextRequest } from "next/server";
 
-const protectedRoutes = ["/profile"];
+const protectedRoutes = ["/profile", "/create"];
 const alreadyUsedRoutes = ["/auth/login", "/auth/registration"];
 
 const redirect = (req: NextRequest) => {

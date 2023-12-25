@@ -14,13 +14,14 @@ const Input = forwardRef<HTMLInputElement, IInput>((props, ref) => {
     type = "text",
     label,
     endIcon,
+    unErrored,
     startIcon,
     ...rest
   } = props;
 
   const [isOpen, setIsOpen] = useState<boolean>(false);
   return (
-    <Wrapper>
+    <Wrapper unErrored={unErrored} isLabeled={!!label}>
       {label && <Label>{label}</Label>}
       <Container>
         {!!startIcon && (
