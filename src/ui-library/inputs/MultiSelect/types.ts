@@ -1,8 +1,10 @@
 import { IActiveble, IOption } from "@/common/types/general";
 import { UseFormRegisterReturn } from "react-hook-form";
-import { IBaseSelectProps } from "../types";
+import { IBaseSelectProps, IErrored } from "../types";
 
-// Tags
+export interface IWrapperProps {
+  isLabeled: boolean;
+}
 export interface ICustomTagComponentProps<T> {
   item: IOption<T>;
   onClick: () => void;
@@ -22,7 +24,7 @@ export type ICustomOptionComponent<T> = (
 ) => JSX.Element;
 
 export interface IMultiSelectProps<T>
-  extends Omit<IBaseSelectProps, "value" | "onChange" | "options"> {
+  extends Omit<IBaseSelectProps, "value" | "onChange" | "options">, IErrored {
   value?: T;
   onChange?: (value: T[]) => void;
   isClear?: boolean;

@@ -2,6 +2,7 @@ export { default as IconClose } from "./IconClose";
 export { default as IconGraduationCap } from "./IconGraduationCap";
 export { default as IconKey } from "./IconKey";
 export { default as IconLogout } from "./IconLogout";
+export { default as IconPlus } from "./IconPlus";
 export { default as IconSearch } from "./IconSearch";
 export { default as IconInstagram } from "./social/IconInstagram";
 export { default as IconPinterest } from "./social/IconPinterest";

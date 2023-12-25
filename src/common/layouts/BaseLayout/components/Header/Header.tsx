@@ -1,5 +1,6 @@
 "use client";
 import imageLogo from "@/assets/images/favicon.png";
+import { IconPlus } from "@/common/components/icons";
 import { LINK_TEMPLATES } from "@/common/constants/links";
 import { useUserStore } from "@/common/store/user";
 import { Button } from "@/ui-library/buttons";
@@ -9,6 +10,7 @@ import {
   Avatar,
   ButtonContainer,
   Container,
+  CreateLink,
   Item,
   Logo,
   Navigations,
@@ -17,7 +19,6 @@ import {
 
 const Header = () => {
   const { push } = useRouter();
-  // const { user } = useUser();
   const user = useUserStore((state) => state.user);
 
   const renderNavigations = () => {
@@ -35,7 +36,7 @@ const Header = () => {
           <Logo src={imageLogo} alt="logo" />
           {renderNavigations()}
         </Navigations>
-        {!user ? (
+        {!user?.id ? (
           <ButtonContainer>
             <Button
               theme="gold"
@@ -52,9 +53,14 @@ const Header = () => {
             </Button>
           </ButtonContainer>
         ) : (
-          <Avatar href={LINK_TEMPLATES.PROFILE()}>
-            {user.username.substring(0, 1)}
-          </Avatar>
+          <ButtonContainer>
+            <CreateLink href={LINK_TEMPLATES.CREATE()}>
+              <IconPlus />
+            </CreateLink>
+            <Avatar href={LINK_TEMPLATES.PROFILE()}>
+              {user.username.substring(0, 1)}
+            </Avatar>
+          </ButtonContainer>
         )}
       </Container>
     </Wrapper>

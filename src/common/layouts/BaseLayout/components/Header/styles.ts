@@ -51,15 +51,37 @@ export const ButtonContainer = styled.div`
   ${({ theme }) => theme.flex.row}
   justify-content: flex-end;
   gap: 16px;
+  height: 100%;
 `;
 
 export const Avatar = styled(Link)`
+  ${({ theme }) => theme.flex.center};
   height: 60%;
   aspect-ratio: 1 / 1;
   border-radius: 50%;
-  ${({ theme }) => theme.flex.center};
   border: 1px solid #cccccc;
   background-color: #f3f2f2;
   color: #191919;
   text-transform: uppercase;
+`;
+
+export const CreateLink = styled(Link)`
+  ${({ theme }) => theme.flex.center};
+  cursor: pointer;
+  height: 50%;
+  aspect-ratio: 1 / 1;
+  svg {
+    path {
+      transition: all 0.4s ease-out;
+    }
+  }
+  @media (hover: hover) {
+    &:hover {
+      svg {
+        path {
+          stroke: ${({ theme }) => theme.colors.primary.gold600};
+        }
+      }
+    }
+  }
 `;

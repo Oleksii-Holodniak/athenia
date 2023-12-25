@@ -17,12 +17,14 @@ const Filter = () => {
         placeholder="Search courses"
         startIcon={<IconSearch />}
         value={query}
+        unErrored
         onChange={(e) => onChangeFilterFieldHandler(e.target.value, "query")}
       />
       <MultiSelect
         options={filterOptions}
         placeholder="Choose categories"
         selected={tags}
+        unErrored
         onChange={(value) => onChangeFilterFieldHandler(value, "tags")}
       />
     </Wrapper>

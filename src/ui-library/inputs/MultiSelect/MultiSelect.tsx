@@ -21,6 +21,7 @@ const MultiSelect = <T extends TSelectOptionGenericType>(
     registerOptions,
     components,
     selected,
+    unErrored,
   } = props;
 
   const [selectedTags, setSelectedTags] = useState<IOption<T>[]>(
@@ -64,7 +65,7 @@ const MultiSelect = <T extends TSelectOptionGenericType>(
   }, [isClear]);
 
   return (
-    <Wrapper ref={refWrapper}>
+    <Wrapper ref={refWrapper} unErrored={!!unErrored}>
       {label && <Label>{label}</Label>}
       <input {...registerOptions} hidden />
       <Input<T>
@@ -85,6 +86,7 @@ const MultiSelect = <T extends TSelectOptionGenericType>(
         onAdd={handlerAdd}
         CustomOption={components?.Option}
         onRemove={handlerRemove}
+        unErrored={unErrored}
       />
       {error && <Message>{renderInputError(error)}</Message>}
     </Wrapper>
