@@ -5,8 +5,9 @@ import { generateHash } from "@/common/helpers/hash";
 import { Input, MultiSelect, TextArea } from "@/ui-library/inputs";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { CoursesService } from "./api";
 import { FileUpload } from "./components";
-import { Flex, Form, Row, Wrapper } from "./styles";
+import { Flex, Form, Row, Submit, Wrapper } from "./styles";
 import { ICreateFormValues } from "./types";
 
 const Create = () => {
@@ -24,7 +25,10 @@ const Create = () => {
   const [file, setFile] = useState<File | null>(null);
 
   const onSubmit = async (form: ICreateFormValues) => {
-    console.log("form :", form);
+    try {
+      const res = await CoursesService.createCourses(form);
+      console.log("res :", res);
+    } catch (error) {}
   };
 
   return (
@@ -78,6 +82,7 @@ const Create = () => {
               error={errors.securityCode}
             />
           </Row>
+          <Submit type="submit">Submit</Submit>
         </Form>
       </Flex>
     </Wrapper>

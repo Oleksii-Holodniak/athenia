@@ -17,10 +17,8 @@ export interface ICourse {
   owner: number;
   tags: string[];
   media: IMedia[];
-  info: {
-    image: string | StaticImageData;
-    name: string;
-    description: string;
-    price: number;
-  };
+  preview: string | StaticImageData;
+  title: string;
+  description: string;
+  price: number;
 }
