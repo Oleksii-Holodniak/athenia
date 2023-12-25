@@ -11,6 +11,7 @@ export const Container = styled.div`
 export const Wrapper = styled(Container)`
   ${({ theme }) => theme.content.sizing}
   gap: 120px;
+  padding-top: 40px !important;
 `;
 
 export const UserHead = styled.div`

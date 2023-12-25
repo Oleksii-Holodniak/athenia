@@ -1,29 +1,27 @@
 "use client";
-import imageUpload from "@/assets/images/decoration/upload.png";
 import { IconKey } from "@/common/components/icons";
 import { filterOptions } from "@/common/constants/general";
+import { generateHash } from "@/common/helpers/hash";
 import { Input, MultiSelect, TextArea } from "@/ui-library/inputs";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
-import {
-  Browse,
-  Flex,
-  Form,
-  ImageUpload,
-  Or,
-  Paragraph,
-  Preview,
-  Row,
-  Title,
-  Wrapper,
-} from "./styles";
+import { FileUpload } from "./components";
+import { Flex, Form, Row, Wrapper } from "./styles";
 import { ICreateFormValues } from "./types";
 
 const Create = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
-  } = useForm<ICreateFormValues>({ mode: "onSubmit" });
+    formState: { errors, isSubmitted },
+  } = useForm<ICreateFormValues>({
+    mode: "onSubmit",
+    defaultValues: {
+      securityCode: generateHash(),
+    },
+  });
+
+  const [file, setFile] = useState<File | null>(null);
 
   const onSubmit = async (form: ICreateFormValues) => {
     console.log("form :", form);
@@ -32,17 +30,10 @@ const Create = () => {
   return (
     <Wrapper>
       <Flex>
-        <Preview>
-          <ImageUpload src={imageUpload} alt="upload" />
-          <Title>Drag files to upload</Title>
-          <Or>or</Or>
-          <Browse>Browse files</Browse>
-          <Paragraph>
-            Max file size: <b>10MB</b>
-            <br />
-            Supported file types: <b>JPG, PNG, SVG, JPEG</b>
-          </Paragraph>
-        </Preview>
+        <FileUpload
+          onChangeFile={(file) => setFile(file)}
+          isError={!file && isSubmitted}
+        />
         <Form onSubmit={handleSubmit(onSubmit)}>
           <Input
             label="Title"
