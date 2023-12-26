@@ -28,7 +28,7 @@ const CourseCard: FC<ICourseComponent> = (props) => {
       <Container className="container">
         <Glossiness>
           <Preview
-            src={preview || imagePlug}
+            src={"https://picsum.photos/800/600"}
             alt="preview"
             className="preview"
             width={400}

@@ -44,7 +44,7 @@ const CourseDetails: FC<ICoursesDetailsProps> = (props) => {
       <Head>
         <Banner>
           <ImageCourse
-            src={preview || imagePlug}
+            src={"https://picsum.photos/800/600"}
             alt="course"
             width={400}
             height={800}
