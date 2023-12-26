@@ -45,6 +45,7 @@ const CourseDetails: FC<ICoursesDetailsProps> = (props) => {
         <Banner>
           <ImageCourse
             src={preview || imagePlug}
+            unoptimized
             alt="course"
             width={400}
             height={800}

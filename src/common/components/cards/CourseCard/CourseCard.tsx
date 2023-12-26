@@ -32,6 +32,7 @@ const CourseCard: FC<ICourseComponent> = (props) => {
             src={preview || imagePlug}
             alt="preview"
             className="preview"
+            unoptimized
             width={400}
             height={300}
             onError={(e) => {
