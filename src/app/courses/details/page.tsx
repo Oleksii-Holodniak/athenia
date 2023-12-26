@@ -12,7 +12,7 @@ const getCourseByQuery = async (id: number): Promise<ICourse | undefined> => {
     const cookieStore = cookies();
     const token = cookieStore.get(process.env.COOKIES_NAME!);
 
-    const res = await fetch(`${process.env.BASE_URL}/course/${id}`, {
+    const res = await fetch(`${process.env.BASE_URL}/course?id=${id}`, {
       headers: {
         Cookie: `${token?.name}=${token?.value}`,
       },
