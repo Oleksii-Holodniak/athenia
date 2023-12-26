@@ -14,6 +14,5 @@ export const List = styled.div`
   display: grid;
   gap: 38px;
   grid-template-columns: repeat(3, calc(33.3% - 25px));
-  min-height: 400px;
   position: relative;
 `;

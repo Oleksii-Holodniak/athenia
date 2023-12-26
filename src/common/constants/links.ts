@@ -14,8 +14,11 @@ export const LINK_TEMPLATES = {
   CREATE: () => {
     return `/create`;
   },
-  COURSES: () => {
-    return `/courses`;
+  COURSES: (
+    query: string | undefined = "",
+    tags: string[] | undefined = []
+  ) => {
+    return `/courses?page=1&query${query}=&tags=${tags.join(",")}`;
   },
   COURSE_DETAILS: (id: string | number) => {
     return `/courses/${id}`;

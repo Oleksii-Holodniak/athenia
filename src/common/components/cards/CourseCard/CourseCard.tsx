@@ -17,7 +17,6 @@ import { ICourseComponent } from "./types";
 
 const CourseCard: FC<ICourseComponent> = (props) => {
   const { description, title, preview, id, tags } = props.course;
-  console.log("id :", id);
   const { push } = useRouter();
 
   const renderTags = () => {

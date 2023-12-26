@@ -1,16 +1,17 @@
-import imageCard1 from "@/assets/images/categories/1.webp";
-import imageCard2 from "@/assets/images/categories/2.webp";
-import imageCard3 from "@/assets/images/categories/3.jpg";
-import imageCard4 from "@/assets/images/categories/4.webp";
-import imageCard5 from "@/assets/images/categories/5.webp";
-import imageCard6 from "@/assets/images/categories/6.webp";
-import imageCard7 from "@/assets/images/categories/7.webp";
-import imageCard8 from "@/assets/images/categories/8.jpg";
+import imageCulinary from "@/assets/images/categories/Culinary.webp";
+import imageDesign from "@/assets/images/categories/Design.webp";
+import imageEcology from "@/assets/images/categories/Ecology.webp";
+import imageFitness from "@/assets/images/categories/Fitness.webp";
+import imageHistory from "@/assets/images/categories/History.webp";
+import imageLegal from "@/assets/images/categories/Legal.webp";
+import imageProgramming from "@/assets/images/categories/Programming.webp";
+import imageScience from "@/assets/images/categories/Science.webp";
 
 import imageArch from "@/assets/images/awards/arch.webp";
 import imageHelmet from "@/assets/images/awards/helmet.webp";
 import imageTroyan from "@/assets/images/awards/troyan.webp";
 
+import { LINK_TEMPLATES } from "@/common/constants/links";
 import { IAccordion, IAward, ICategory } from "./types";
 
 export const theBest: IAccordion[] = [
@@ -42,51 +43,51 @@ export const theBest: IAccordion[] = [
 export const categories: ICategory[] = [
   {
     id: 1,
-    image: imageCard1,
-    name: "Languages",
-    path: "/",
+    image: imageEcology,
+    name: "Ecology",
+    path: LINK_TEMPLATES.COURSES("", ["ecology"]),
   },
   {
     id: 2,
-    image: imageCard2,
-    name: "Languages",
-    path: "/",
+    image: imageLegal,
+    name: "Legal",
+    path: LINK_TEMPLATES.COURSES("", ["legal"]),
   },
   {
     id: 3,
-    image: imageCard3,
-    name: "Languages",
-    path: "/",
+    image: imageCulinary,
+    name: "Culinary",
+    path: LINK_TEMPLATES.COURSES("", ["culinary"]),
   },
   {
     id: 4,
-    image: imageCard4,
-    name: "Languages",
-    path: "/",
+    image: imageProgramming,
+    name: "Programming",
+    path: LINK_TEMPLATES.COURSES("", ["programming"]),
   },
   {
     id: 5,
-    image: imageCard5,
-    name: "Languages",
-    path: "/",
+    image: imageHistory,
+    name: "History",
+    path: LINK_TEMPLATES.COURSES("", ["history"]),
   },
   {
     id: 6,
-    image: imageCard6,
-    name: "Languages",
-    path: "/",
+    image: imageScience,
+    name: "Science",
+    path: LINK_TEMPLATES.COURSES("", ["science"]),
   },
   {
     id: 7,
-    image: imageCard7,
-    name: "Languages",
-    path: "/",
+    image: imageDesign,
+    name: "Design",
+    path: LINK_TEMPLATES.COURSES("", ["design"]),
   },
   {
     id: 8,
-    image: imageCard8,
-    name: "Languages",
-    path: "/",
+    image: imageFitness,
+    name: "Fitness",
+    path: LINK_TEMPLATES.COURSES("", ["fitness"]),
   },
 ];
 

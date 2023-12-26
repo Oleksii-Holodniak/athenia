@@ -47,6 +47,7 @@ export const ImageCourse = styled(Image)`
   object-fit: cover;
   border-radius: 12px;
   border: 1px solid #fff;
+  background-color: #fff;
 `;
 
 export const Information = styled.div`
@@ -62,6 +63,38 @@ export const Title = styled.h2`
 `;
 
 export const Paragraph = styled.p``;
+
+export const SecurityCode = styled.div`
+  ${({ theme }) => theme.flex.column};
+  background-color: ${({ theme }) => theme.colors.primary.main};
+  border: 1px solid ${({ theme }) => theme.colors.primary.gray200};
+  height: fit-content;
+  max-width: 150px;
+  border-radius: 10px;
+  overflow: auto;
+  font-size: 16px;
+  font-weight: 600;
+
+  @media (hover: hover) {
+    &:hover {
+      border: 1px solid ${({ theme }) => theme.colors.primary.gray300};
+    }
+  }
+  span {
+    display: block;
+    padding: 12px;
+    word-break: break-all;
+  }
+`;
+
+export const Copy = styled.button`
+  ${({ theme }) => theme.flex.center};
+  background: ${({ theme }) => theme.colors.primary.gold700};
+  width: 100%;
+  gap: 6px;
+  padding: 8px 0;
+  margin-top: auto;
+`;
 
 export const Social = styled.div`
   ${({ theme }) => theme.flex.column};

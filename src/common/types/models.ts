@@ -5,6 +5,8 @@ export interface IUser {
   id: string;
   email: string;
   username: string;
+  ownerCourses: ICourse[];
+  studentCourses: ICourse[];
 }
 
 export interface IMedia {
@@ -21,6 +23,7 @@ export interface ICourse {
   preview: string | StaticImageData;
   title: string;
   description: string;
+  securityCode?: string;
 }
 
 export interface IFileUploadModel {

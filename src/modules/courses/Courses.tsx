@@ -49,7 +49,7 @@ const Courses = () => {
     <Wrapper>
       <Banner />
       <Filter />
-      <List>{!courses?.length ? <NotFound /> : renderCourses()}</List>
+      {!courses?.length ? <NotFound /> : <List>{renderCourses()}</List>}
       <Pagination
         currentPage={filter.page}
         onPageChange={(page) => {

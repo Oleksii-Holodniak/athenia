@@ -3,10 +3,10 @@ import avatar from "@/assets/images/user-logo.jpg";
 import { BackgroundAnimation } from "@/common/components/animated-blocks";
 import { CourseCard } from "@/common/components/cards";
 import { IconLogout } from "@/common/components/icons";
+import { NotFound } from "@/common/components/shared";
 import { useUserStore } from "@/common/store/user";
-import { mocksCourses } from "@/mocks/courses";
 import { UserService } from "@/services/general";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import {
   Avatar,
   CardList,
@@ -20,13 +20,21 @@ import {
   UserHead,
   Wrapper,
 } from "./styles";
-import { TActiveTab } from "./types";
-const tabs = ["purchased", "created"];
+import { TActiveTab, TUserField } from "./types";
+
+const tabs: Record<TActiveTab, TUserField> = {
+  created: "ownerCourses",
+  purchased: "studentCourses",
+};
 
 const Profile = () => {
   const user = useUserStore((state) => state.user);
+  const [activeTab, setActiveTab] = useState<TActiveTab>("created");
 
-  const [activeTab, setActiveTab] = useState<TActiveTab>("purchased");
+  const courses = useMemo(
+    () => user?.[tabs[activeTab]].filter((item) => !!item),
+    [activeTab, user?.ownerCourses.length, user?.studentCourses.length]
+  );
 
   const exitHandler = async () => {
     await UserService.logOut();
@@ -34,7 +42,7 @@ const Profile = () => {
   };
 
   const renderTabs = () =>
-    tabs.map((tab, id) => (
+    Object.keys(tabs).map((tab, id) => (
       <Tab
         isActive={tab === activeTab}
         key={id}
@@ -45,10 +53,11 @@ const Profile = () => {
     ));
 
   const renderCourses = () => {
-    return mocksCourses.map((course) => (
-      <CourseCard course={course} key={course.id} />
+    return courses?.map((course) => (
+      <CourseCard course={course} key={course?.id} />
     ));
   };
+
   return (
     <Wrapper>
       <UserHead>
@@ -65,7 +74,11 @@ const Profile = () => {
       </UserHead>
       <Container>
         <TabList>{renderTabs()}</TabList>
-        <CardList>{renderCourses()}</CardList>
+        {courses?.length ? (
+          <CardList> {renderCourses()}</CardList>
+        ) : (
+          <NotFound />
+        )}
       </Container>
     </Wrapper>
   );

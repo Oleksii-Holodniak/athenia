@@ -133,4 +133,5 @@ export const CardList = styled.div`
   display: grid;
   gap: 38px;
   grid-template-columns: repeat(3, calc(33.3% - 25px));
+  position: relative;
 `;

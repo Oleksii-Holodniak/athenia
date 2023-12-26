@@ -7,10 +7,8 @@ export const Wrapper = styled.div`
   box-shadow: 0px 4px 12px 0px rgba(16, 24, 40, 0.06);
   justify-content: center;
   align-items: center;
-  position: absolute;
-  inset: 0;
+  height: 400px;
   width: 100%;
-  min-height: 400px;
   p {
     font-size: 20px;
     max-width: 470px;

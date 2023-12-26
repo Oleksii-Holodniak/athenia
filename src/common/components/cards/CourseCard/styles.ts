@@ -33,10 +33,10 @@ export const Glossiness = styled.div`
   width: calc(100% + 24px);
   height: 200px;
   position: relative;
-  box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.5);
   border-radius: 12px;
   border: 1px solid #cbcbcb5b;
   overflow: hidden;
+  background-color: #fff;
 `;
 
 export const Preview = styled(Image)`
