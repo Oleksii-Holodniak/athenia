@@ -1,11 +1,9 @@
-import { LINK_TEMPLATES } from "@/common/constants/links";
 import { BaseLayout } from "@/common/layouts";
 import { ICourse } from "@/common/types/models";
 import CourseDetails from "@/modules/course-details/CourseDetails";
 import { ICoursesDetailsPageProps } from "@/modules/course-details/types";
 import { NextPage } from "next";
 import { cookies } from "next/headers";
-import { redirect } from "next/navigation";
 
 const getCourseByQuery = async (id: number): Promise<ICourse | undefined> => {
   try {
@@ -38,11 +36,14 @@ const getCourseByQuery = async (id: number): Promise<ICourse | undefined> => {
 };
 
 const DetailsPage: NextPage<ICoursesDetailsPageProps> = async ({ params }) => {
-  const courseData = await getCourseByQuery(params.id);
-  if (!courseData) {
-    redirect(LINK_TEMPLATES.COURSES());
+  if (!params || !params.id) {
+    return <div>Error: Missing ID parameter</div>;
   }
+  const courseData = await getCourseByQuery(params.id);
 
+  if (!courseData) {
+    return <div>Error: No data</div>;
+  }
   return (
     <BaseLayout>
       <CourseDetails course={courseData} />
