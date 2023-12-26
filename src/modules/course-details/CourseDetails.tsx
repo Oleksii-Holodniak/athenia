@@ -1,5 +1,4 @@
 "use client";
-import imagePlug from "@/assets/images/empty.png";
 import { getMediaType } from "@/common/helpers/media";
 import { useUserStore } from "@/common/store/user";
 import Image from "next/image";
@@ -9,7 +8,6 @@ import {
   Banner,
   Content,
   Head,
-  ImageCourse,
   Information,
   Paragraph,
   Social,
@@ -43,7 +41,7 @@ const CourseDetails: FC<ICoursesDetailsProps> = (props) => {
     <Wrapper>
       <Head>
         <Banner>
-          <ImageCourse
+          {/* <ImageCourse
             src={preview || imagePlug}
             alt="course"
             width={400}
@@ -51,7 +49,7 @@ const CourseDetails: FC<ICoursesDetailsProps> = (props) => {
             onError={(e) => {
               e.currentTarget.src = imagePlug.src;
             }}
-          />
+          /> */}
           <Information>
             <Title>{title}</Title>
             <Paragraph>{description}</Paragraph>
