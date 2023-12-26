@@ -3,9 +3,6 @@ const nextConfig = {
   compiler: {
     styledComponents: true,
   },
-  experimental: {
-    serverActions: true,
-  },
   env: {
     BASE_URL: process.env.BASE_URL,
     COOKIES_NAME: process.env.COOKIES_NAME,
