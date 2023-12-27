@@ -15,7 +15,7 @@ import { IFileItemProps } from "./types";
 const FileItem: FC<IFileItemProps> = ({ item, onDelete }) => (
   <Wrapper>
     <FileImage
-      src={fileType[item?.name?.split(".").pop()] || imageFileUnknown}
+      src={fileType[item?.name?.split(".")?.pop() || ""] || imageFileUnknown}
       alt={item.type}
     />
     <Info>
