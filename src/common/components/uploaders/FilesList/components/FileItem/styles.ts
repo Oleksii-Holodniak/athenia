@@ -3,16 +3,19 @@ import styled from "styled-components";
 
 export const Wrapper = styled.div`
   ${({ theme }) => theme.flex.row};
-  background: ${({ theme }) => theme.colors.primary.main25};
+  background: ${({ theme }) => theme.colors.primary.main};
+  border: 1px solid ${({ theme }) => theme.colors.primary.gray300};
   border-radius: 4px;
-  height: 44px;
-  padding: 10px 6px;
+  height: 62px;
+  padding: 10px 16px;
   gap: 8px;
+  min-width: 280px;
+  max-width: 280px;
 `;
 
 export const FileImage = styled(Image)`
-  height: 24px;
-  width: 18px;
+  height: 32px;
+  width: auto;
   object-fit: cover;
 `;
 
@@ -24,25 +27,39 @@ export const Info = styled.div`
 `;
 
 export const CrossButton = styled.button`
+  ${({ theme }) => theme.flex.center};
   padding: 0;
   height: 18px;
-  width: 18px;
-  svg {
+  min-width: 18px;
+  position: relative;
+  &::after,
+  &::before {
+    content: "";
+    position: absolute;
+    width: 1px;
+    height: 100%;
+    background: ${({ theme }) => theme.colors.primary.gray400};
+    border-radius: 1px;
+    z-index: 2;
+  }
+  &::before {
     transform: rotate(45deg);
-    stroke: ${({ theme }) => theme.colors.primary.gray400};
+  }
+  &::after {
+    transform: rotate(-45deg);
   }
 `;
 
 export const Name = styled.span`
   color: ${({ theme }) => theme.colors.primary.gray800};
   ${({ theme }) => theme.text.overflow};
-  font-size: 10px;
-  font-weight: 400;
+  font-size: 14px;
+  font-weight: 600;
   margin-top: 2px;
 `;
 
 export const FileSize = styled.span`
   color: ${({ theme }) => theme.colors.primary.gray400};
-  font-size: 8px;
-  font-weight: 400;
+  font-size: 10px;
+  font-weight: 500;
 `;

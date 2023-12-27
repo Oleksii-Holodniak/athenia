@@ -25,13 +25,23 @@ import {
 import { ICoursesDetailsProps } from "./types";
 
 const CourseDetails: FC<ICoursesDetailsProps> = (props) => {
-  const { description, id, preview, title, media, owners, tags, securityCode } =
-    props.course;
+  const {
+    description,
+    id,
+    preview,
+    title,
+    media,
+    owners,
+    tags,
+    securityCode,
+    students,
+  } = props.course;
   const { enqueueSnackbar } = useSnackbar();
   const [opened, setOpened] = useState(false);
   const isAuthorized = useUserStore((state) => state.isAuthorized);
   const user = useUserStore((state) => state.user);
-  const IS_OWNER = owners?.some((el) => el.id === user?.id);
+  const IS_OWNER = !!owners?.some((el) => el.id === user?.id);
+  const IS_STUDENT = !!students?.some((el) => el.id === user?.id);
 
   const onCopyCode = async () => {
     if (securityCode) {
@@ -92,8 +102,10 @@ const CourseDetails: FC<ICoursesDetailsProps> = (props) => {
         </Banner>
       </Head>
       <Content>
-        {isAuthorized && IS_OWNER && <Forms />}
-        {isAuthorized && !IS_OWNER && (
+        {isAuthorized && (IS_OWNER || IS_STUDENT) && (
+          <Forms isStudent={IS_STUDENT} />
+        )}
+        {isAuthorized && !IS_OWNER && !IS_STUDENT && (
           <BuyCourse setOpened={setOpened} opened={opened} />
         )}
         {!isAuthorized && !IS_OWNER && <NotAllow />}

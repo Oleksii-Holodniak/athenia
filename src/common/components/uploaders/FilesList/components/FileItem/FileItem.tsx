@@ -1,5 +1,4 @@
 import imageFileUnknown from "@/assets/images/file-types/unknown.webp";
-import { IconPlus } from "@/common/components/icons";
 import { formatFileSize } from "@/common/helpers/upload-files";
 import { FC } from "react";
 import { fileType } from "./data";
@@ -16,16 +15,14 @@ import { IFileItemProps } from "./types";
 const FileItem: FC<IFileItemProps> = ({ item, onDelete }) => (
   <Wrapper>
     <FileImage
-      src={fileType[item.mimetype] || imageFileUnknown}
-      alt={item.mimetype}
+      src={fileType[item?.name?.split(".")?.pop() || ""] || imageFileUnknown}
+      alt={item.type}
     />
     <Info>
-      <Name>{item.filename}</Name>
-      <FileSize>{formatFileSize(item.filesize, "Bytes", "MB")}</FileSize>
+      <Name>{item.name}</Name>
+      <FileSize>{formatFileSize(item.size, "Bytes", "MB")}</FileSize>
     </Info>
-    <CrossButton onClick={() => onDelete(item.id)}>
-      <IconPlus />
-    </CrossButton>
+    <CrossButton onClick={() => onDelete?.(item.lastModified.toString())} />
   </Wrapper>
 );
 

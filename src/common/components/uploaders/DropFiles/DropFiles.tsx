@@ -1,4 +1,5 @@
 import imageUpload from "@/assets/images/decoration/upload.png";
+import { fileValidate } from "@/common/helpers/upload-files";
 import { useSnackbar } from "notistack";
 import { FC, useState } from "react";
 import {
@@ -10,10 +11,15 @@ import {
   Title,
   Wrapper,
 } from "./styles";
-import { IFileUploadProps } from "./types";
+import { IFileUploadProps, IFilesError } from "./types";
 
-const FileUpload: FC<IFileUploadProps> = (props) => {
-  const { isError, onChangeFile } = props;
+const DropFiles: FC<IFileUploadProps> = (props) => {
+  const {
+    isError,
+    onChangeFile,
+    allowFilesFormats,
+    isAbleToPreview = true,
+  } = props;
   const [previewSrc, setPreviewSrc] = useState<string | null>(null);
   const { enqueueSnackbar } = useSnackbar();
 
@@ -29,24 +35,27 @@ const FileUpload: FC<IFileUploadProps> = (props) => {
   };
 
   const handleFile = (file: File | undefined) => {
-    if (!file) return;
+    try {
+      if (!file) return;
 
-    if (!file.type.startsWith("image/")) {
+      fileValidate(file, allowFilesFormats || []);
+
+      const reader = new FileReader();
+      if (isAbleToPreview) {
+        reader.onload = (e) => {
+          setPreviewSrc(e.target?.result as string);
+        };
+      }
+
+      reader.readAsDataURL(file);
+      onChangeFile(file);
+    } catch (e) {
+      const error = e as IFilesError;
       enqueueSnackbar({
-        message: "Please select an image.",
-        variant: "warning",
+        variant: "error",
+        message: error.message || "",
       });
-      return;
     }
-
-    const reader = new FileReader();
-
-    reader.onload = (e) => {
-      setPreviewSrc(e.target?.result as string);
-    };
-
-    reader.readAsDataURL(file);
-    onChangeFile(file);
   };
 
   const handleClick = () => {
@@ -68,7 +77,11 @@ const FileUpload: FC<IFileUploadProps> = (props) => {
       <Paragraph>
         Max file size: <b>10MB</b>
         <br />
-        Supported file types: <b>JPG, PNG, SVG, JPEG</b>
+        {!!allowFilesFormats?.length && (
+          <>
+            Supported file types: <b>{allowFilesFormats?.join(", ")}</b>
+          </>
+        )}
       </Paragraph>
       <input
         type="file"
@@ -76,9 +89,11 @@ const FileUpload: FC<IFileUploadProps> = (props) => {
         style={{ display: "none" }}
         onChange={handleFileSelect}
       />
-      {previewSrc && <Preview src={previewSrc} alt="Preview" fill />}
+      {previewSrc && isAbleToPreview && (
+        <Preview src={previewSrc} alt="Preview" fill />
+      )}
     </Wrapper>
   );
 };
 
-export default FileUpload;
+export default DropFiles;

@@ -1,1 +1,2 @@
-export { default as FilesUploader } from "./FilesUploader/FilesUploader";
+export { default as DropFiles } from "./DropFiles/DropFiles";
+export { default as FilesList } from "./FilesList/FilesList";
