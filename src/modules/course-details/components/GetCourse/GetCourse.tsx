@@ -5,8 +5,10 @@ import {
 } from "@/common/components/icons";
 import { AnimatedModal } from "@/common/components/modals";
 import { Input } from "@/ui-library/inputs";
+import { useSnackbar } from "notistack";
 import { FC } from "react";
 import { useForm } from "react-hook-form";
+import { CourseService } from "../../api";
 import {
   Content,
   Exit,
@@ -23,11 +25,29 @@ const GetCourse: FC<IGetCourse> = (props) => {
   const {
     register,
     handleSubmit,
+    setError,
     formState: { errors },
   } = useForm<IGetCourseValues>({ mode: "onSubmit" });
+  const { enqueueSnackbar } = useSnackbar();
 
   const onSubmit = async (form: IGetCourseValues) => {
-    console.log("form :", form);
+    try {
+      const res = await CourseService.getCourse(form.securityCode);
+      if (res.status === 200) {
+        enqueueSnackbar({
+          variant: "success",
+          message: "Successfully connected to new course",
+        });
+        window.location.reload();
+      } else {
+        setError("securityCode", {
+          type: "validate",
+          message: "Invalid security code",
+        });
+      }
+    } catch (err) {
+      enqueueSnackbar({ variant: "success", message: "Something went wrong" });
+    }
   };
 
   return (
@@ -42,7 +62,7 @@ const GetCourse: FC<IGetCourse> = (props) => {
         </Head>
         <Content>
           <Paragraph>
-            Enter the special key in the form of 16 characters that was given to
+            Enter the special key in the form of 32 characters that was given to
             you by your own for this course
           </Paragraph>
           <Form onSubmit={handleSubmit(onSubmit)}>
@@ -51,14 +71,6 @@ const GetCourse: FC<IGetCourse> = (props) => {
               startIcon={<IconKey />}
               {...register("securityCode", {
                 required: true,
-                minLength: {
-                  message: "Minimum field length: 16 characters",
-                  value: 16,
-                },
-                maxLength: {
-                  message: "Maximum field length: 16 characters",
-                  value: 16,
-                },
               })}
               error={errors.securityCode}
             />

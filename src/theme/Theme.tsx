@@ -1,8 +1,7 @@
 "use client";
+import "@/styles/globals.css";
 import { FC, PropsWithChildren } from "react";
 import { ThemeProvider, css } from "styled-components";
-
-import { SnackbarProvider } from "notistack";
 import { ITheme } from "./types";
 
 export const config: ITheme = {
@@ -154,11 +153,7 @@ export const config: ITheme = {
 
 const Theme: FC<PropsWithChildren> = (props) => {
   const { children } = props;
-  return (
-    <ThemeProvider theme={config}>
-      <SnackbarProvider>{children}</SnackbarProvider>
-    </ThemeProvider>
-  );
+  return <ThemeProvider theme={config}>{children}</ThemeProvider>;
 };
 
 export default Theme;

@@ -1,7 +1,7 @@
+import { SnackbarLayout } from "@/common/layouts";
 import { InitUserSync } from "@/common/store/user/InitUserSync";
 import { IUser } from "@/common/types/models";
 import StyledComponentsRegistry from "@/lib/registry";
-import "@/styles/globals.css";
 import Theme from "@/theme/Theme";
 import type { Metadata } from "next";
 import { Nunito } from "next/font/google";
@@ -61,8 +61,10 @@ export default async function RootLayout({
     <html lang="en" className={`${greece.variable} ${nunito.variable}`}>
       <body>
         <StyledComponentsRegistry>
-          <InitUserSync user={user} isAuthorized={!!user?.email} />
-          <Theme>{children}</Theme>
+          <SnackbarLayout>
+            <InitUserSync user={user} isAuthorized={!!user?.email} />
+            <Theme>{children}</Theme>
+          </SnackbarLayout>
         </StyledComponentsRegistry>
       </body>
     </html>
