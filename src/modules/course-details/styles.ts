@@ -31,7 +31,6 @@ export const Content = styled.div`
   ${({ theme }) => theme.flex.column};
   width: 100%;
   gap: 40px;
-  height: 60vh;
   min-height: 400px;
   position: relative;
 `;

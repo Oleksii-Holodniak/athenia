@@ -20,7 +20,7 @@ export const fileValidate = (file: File, formats: string[]) => {
   const size = 10000000; // 10mb
 
   const format = file.name.split(".").pop();
-  if (format && !formats.includes(format)) {
+  if (!!formats.length && format && !formats.includes(format)) {
     throw new Error(`${file.name} file is in the wrong format`);
   }
   if (file.size > size) {

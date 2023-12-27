@@ -44,3 +44,11 @@ export const AddMaterial = styled.button`
     }
   }
 `;
+
+export const Grid = styled.div`
+  width: 100%;
+  display: grid;
+  grid-template-columns: calc(100% - 424px) 400px;
+  grid-gap: 24px;
+  padding-bottom: 60px;
+`;

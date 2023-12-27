@@ -14,7 +14,7 @@ export const TABS: Record<string, FC> = {
   [COURSE_TAB.EXAMS]: Exams,
 };
 
-const Forms = () => {
+const Forms: FC<{ isStudent: boolean }> = ({ isStudent }) => {
   const activeTab = useDetailsStore((state) => state.tab);
   const onChangeTab = useDetailsStore((state) => state.onChangeTab);
   const setIsAdditing = useDetailsStore((state) => state.setIsAdditing);
@@ -36,9 +36,11 @@ const Forms = () => {
     <Wrapper>
       <TabList>
         {renderTabs()}
-        <AddItem onClick={() => setIsAdditing(true, activeTab)}>
-          <IconPlus />
-        </AddItem>
+        {!isStudent && (
+          <AddItem onClick={() => setIsAdditing(true, activeTab)}>
+            <IconPlus />
+          </AddItem>
+        )}
       </TabList>
       <CurrentTab />
     </Wrapper>

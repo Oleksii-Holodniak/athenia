@@ -1,4 +1,5 @@
 "use client";
+import { DropFiles } from "@/common/components/uploaders";
 import { filterOptions } from "@/common/constants/general";
 import { LINK_TEMPLATES } from "@/common/constants/links";
 import { Input, MultiSelect, TextArea } from "@/ui-library/inputs";
@@ -7,7 +8,6 @@ import { useSnackbar } from "notistack";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { CoursesService } from "./api";
-import { FileUpload } from "./components";
 import { Flex, Form, Submit, Wrapper } from "./styles";
 import { ICreateFormValues } from "./types";
 
@@ -61,9 +61,10 @@ const Create = () => {
   return (
     <Wrapper>
       <Flex>
-        <FileUpload
+        <DropFiles
           onChangeFile={(file) => setFile(file)}
           isError={!file && isSubmitted}
+          allowFilesFormats={["jpg", "png", "svg", "jpeg"]}
         />
         <Form onSubmit={handleSubmit(onSubmit)}>
           <Input
