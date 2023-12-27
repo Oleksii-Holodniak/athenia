@@ -13,7 +13,7 @@ import {
 } from "./styles";
 import { IFileUploadProps, IFilesError } from "./types";
 
-const DropFIles: FC<IFileUploadProps> = (props) => {
+const DropFiles: FC<IFileUploadProps> = (props) => {
   const {
     isError,
     onChangeFile,
@@ -96,4 +96,4 @@ const DropFIles: FC<IFileUploadProps> = (props) => {
   );
 };
 
-export default DropFIles;
+export default DropFiles;
