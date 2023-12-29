@@ -34,4 +34,8 @@ export const CourseService = {
     const data = await axios.post(`${process.env.BASE_URL}/course/exam`, body);
     return data;
   },
+  async deleteCourse(id: string) {
+    const data = await axios.delete(`${process.env.BASE_URL}/course/${id}`);
+    return data;
+  },
 };

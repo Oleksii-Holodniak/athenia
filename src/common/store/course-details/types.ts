@@ -6,6 +6,8 @@ export interface IDetailsInitStoreProps {
   isAdditingMaterial: boolean;
   tab: TActiveTab;
   course: ICourse;
+  openVideoViewer: boolean;
+  videoLink: string;
 }
 
 export interface IDetailsStoreProps extends IDetailsInitStoreProps {
@@ -13,4 +15,6 @@ export interface IDetailsStoreProps extends IDetailsInitStoreProps {
   setIsAdditing: (value: boolean, name: TActiveTab) => void;
   addNewMaterial: (course: IMaterial) => void;
   addNewExam: (course: IExam) => void;
+  setOpenVideoViewer: (value: boolean) => void;
+  setVideoLink: (value: string) => void;
 }

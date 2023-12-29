@@ -37,7 +37,6 @@ const getCourseByQuery = async (id: number): Promise<ICourse | undefined> => {
 };
 
 const DetailsPage: NextPage<ICoursesDetailsPageProps> = async ({ params }) => {
-  console.log("params.id :", params.id);
   if (!params || !params.id) {
     return <div>Error: Missing ID parameter</div>;
   }

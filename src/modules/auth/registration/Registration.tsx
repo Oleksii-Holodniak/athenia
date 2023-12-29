@@ -97,9 +97,9 @@ const Registration = () => {
         })}
         error={errors.confirm_password}
       />
-      <SubmitButton type="submit">Sing in</SubmitButton>
+      <SubmitButton type="submit">Sing up</SubmitButton>
       <EmptyButton type="button" onClick={() => push(LINK_TEMPLATES.LOGIN())}>
-        Sing up
+        Sing in
       </EmptyButton>
     </Form>
   );

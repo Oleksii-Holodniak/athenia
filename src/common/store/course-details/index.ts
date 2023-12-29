@@ -9,6 +9,8 @@ const initialState: IDetailsInitStoreProps = {
   isAdditingMaterial: false,
   tab: "materials",
   course: {} as ICourse,
+  openVideoViewer: false,
+  videoLink: "",
 };
 
 export const useDetailsStore = create<IDetailsStoreProps>()(
@@ -39,7 +41,17 @@ export const useDetailsStore = create<IDetailsStoreProps>()(
         set((state) => {
           state.course.exams.push(exam);
         });
-      }
+      },
+      setOpenVideoViewer: (value) => {
+        set((state) => {
+          state.openVideoViewer = value;
+        });
+      },
+      setVideoLink: (value) => {
+        set((state) => {
+          state.videoLink = value;
+        });
+      },
     }))
   )
 );

@@ -13,6 +13,8 @@ import imageTXT from "@/assets/images/file-types/TXT.svg";
 
 import { StaticImageData } from "next/image";
 
+export const videoFormats = ["mkv", "avi", "mp4", "mov"];
+
 export const fileType: Record<string, StaticImageData> = {
   pdf: imagePDF,
   doc: imageDOC,
