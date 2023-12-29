@@ -9,6 +9,7 @@ import {
 import { LINK_TEMPLATES } from "@/common/constants/links";
 import { useDetailsStore } from "@/common/store/course-details";
 import { useUserStore } from "@/common/store/user";
+import clipboardCopy from "clipboard-copy";
 import { useRouter } from "next/navigation";
 import { useSnackbar } from "notistack";
 import { useState } from "react";
@@ -58,7 +59,7 @@ const CourseDetails = () => {
   const onCopyCode = async () => {
     if (securityCode) {
       try {
-        await navigator.clipboard.writeText(securityCode);
+        clipboardCopy(securityCode);
         enqueueSnackbar({
           variant: "success",
           message: "Successfully copied code",
