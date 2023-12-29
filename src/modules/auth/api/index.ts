@@ -4,13 +4,11 @@ import { ILoginFormValues, IRegisterApi } from "../types";
 export const AuthService = {
   async register(form: IRegisterApi) {
     const data = await axios.post("/auth/signup", form);
-    console.log("data :", data);
     return data;
   },
   async login(form: ILoginFormValues) {
     const data = await axios.post("/auth/signin", form);
     const cookie = Cookies.get(process.env.COOKIES_NAME!);
-    console.log("cookie :", cookie);
     return data;
   },
 };

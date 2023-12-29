@@ -22,7 +22,7 @@ const Login = () => {
       const { data } = await AuthService.login(form);
       // if (data.status === 200) {
       // enqueueSnackbar({ variant: "success", message: "Successfully" });
-      // window.location.href = LINK_TEMPLATES.PROFILE();
+      window.location.href = LINK_TEMPLATES.PROFILE();
       // }
     } catch (e) {
       const error = e as IResponse;
