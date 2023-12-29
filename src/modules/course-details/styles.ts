@@ -40,13 +40,28 @@ export const ContentItem = styled.div`
   gap: 16px;
 `;
 
+export const PreviewCourse = styled.div`
+  height: 100%;
+  position: relative;
+  width: fit-content;
+  overflow: hidden;
+`;
+
+export const Trash = styled(Button)`
+  ${({ theme }) => theme.flex.center};
+  margin-top: 16px;
+  font-size: 14px;
+  color: ${({ theme }) => theme.colors.primary.error600};
+  padding: 8px 12px;
+`;
+
 export const ImageCourse = styled(Image)`
   height: 100%;
-  aspect-ratio: 2 / 3;
   object-fit: cover;
   border-radius: 12px;
   border: 1px solid #fff;
   background-color: #fff;
+  aspect-ratio: 2 / 3;
 `;
 
 export const Information = styled.div`
@@ -134,9 +149,9 @@ export const Tags = styled.div`
 `;
 
 export const Info = styled.div`
-  ${({ theme }) => theme.flex.between};
+  ${({ theme }) => theme.flex.row};
   align-items: center;
-  gap: 4px;
+  gap: 16px;
   height: 32px;
   width: 100%;
   * {
@@ -145,13 +160,15 @@ export const Info = styled.div`
 `;
 
 export const Time = styled.div`
+  ${({ theme }) => theme.flex.center};
   background-color: ${({ theme }) => theme.colors.primary.main};
   box-shadow: 0px 0px 20px -5px #10101065;
   border-radius: 4px;
   padding: 4px 8px;
   gap: 4px;
-
-  ${({ theme }) => theme.flex.center};
+  position: absolute;
+  top: 0;
+  right: 0;
 `;
 
 export const Manager = styled.a`

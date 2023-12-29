@@ -51,12 +51,12 @@ const Login = () => {
         })}
         error={errors.password}
       />
-      <SubmitButton type="submit">Sing up</SubmitButton>
+      <SubmitButton type="submit">Sing in</SubmitButton>
       <EmptyButton
         type="button"
         onClick={() => push(LINK_TEMPLATES.REGISTRATION())}
       >
-        Sing in
+        Sing up
       </EmptyButton>
     </Form>
   );

@@ -31,7 +31,8 @@ const Courses = () => {
     await push(
       `?page=${debounce.page}&query=${debounce.query}&tags=${debounce.tags.join(
         ","
-      )}`
+      )}`,
+      { scroll: false }
     );
   };
 
