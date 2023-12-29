@@ -55,20 +55,23 @@ export const Information = styled.div`
   flex: 1 1 auto;
   height: 100%;
   gap: 16px;
+  width: calc(100% - 600px);
 `;
 
 export const Title = styled.h2`
   font-weight: 600;
 `;
 
-export const Paragraph = styled.p``;
+export const Paragraph = styled.p`
+  overflow: auto;
+`;
 
 export const SecurityCode = styled.div`
   ${({ theme }) => theme.flex.column};
   background-color: ${({ theme }) => theme.colors.primary.main};
   border: 1px solid ${({ theme }) => theme.colors.primary.gray200};
   height: fit-content;
-  max-width: 150px;
+  width: 100%;
   border-radius: 10px;
   overflow: auto;
   font-size: 16px;
@@ -99,7 +102,10 @@ export const Social = styled.div`
   ${({ theme }) => theme.flex.column};
   justify-content: flex-start;
   height: 100%;
-  gap: 24px;
+  gap: 16px;
+  padding-top: 24px;
+  max-width: 150px;
+  width: 100%;
   img {
     width: 40px;
     height: 40px;
@@ -125,4 +131,34 @@ export const Tags = styled.div`
   font-size: 12px;
   white-space: nowrap;
   border-radius: 4px;
+`;
+
+export const Info = styled.div`
+  ${({ theme }) => theme.flex.between};
+  align-items: center;
+  gap: 4px;
+  height: 32px;
+  width: 100%;
+  * {
+    font-size: 18px;
+  }
+`;
+
+export const Time = styled.div`
+  background-color: ${({ theme }) => theme.colors.primary.main};
+  box-shadow: 0px 0px 20px -5px #10101065;
+  border-radius: 4px;
+  padding: 4px 8px;
+  gap: 4px;
+
+  ${({ theme }) => theme.flex.center};
+`;
+
+export const Manager = styled.a`
+  width: 40px;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  ${({ theme }) => theme.flex.center};
+  background-color: ${({ theme }) => theme.colors.primary.main};
+  box-shadow: 0px 0px 20px -5px #10101065;
 `;

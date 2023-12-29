@@ -11,6 +11,7 @@ export const Wrapper = styled.div`
   gap: 8px;
   min-width: 280px;
   max-width: 280px;
+  cursor: pointer;
 `;
 
 export const FileImage = styled(Image)`

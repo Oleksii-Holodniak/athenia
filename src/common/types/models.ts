@@ -14,16 +14,44 @@ export interface IMedia {
   name: TSocialMediaType;
 }
 
+export interface IExam {
+  title: string;
+  description: string;
+  link: string;
+  time: string;
+}
+
+export interface IFile {
+  link?: string;
+  name: string;
+  size: number;
+  id?: string;
+  lastModified?: number;
+}
+
+export interface IMaterial {
+  createDate: string;
+  description: string;
+  files: IFile[];
+  id: string;
+  serial: number;
+  time: string;
+  title: string;
+}
+
 export interface ICourse {
   id: string;
-  owners?: IUser[];
+  owners: IUser[];
   students?: IUser[];
   tags: string[];
+  materials: IMaterial[];
+  exams: IExam[];
   media: IMedia[];
   preview: string | StaticImageData;
   title: string;
   description: string;
   securityCode?: string;
+  time: number;
 }
 
 export interface IFileUploadModel {

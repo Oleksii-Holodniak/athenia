@@ -12,18 +12,37 @@ import {
 } from "./styles";
 import { IFileItemProps } from "./types";
 
-const FileItem: FC<IFileItemProps> = ({ item, onDelete }) => (
-  <Wrapper>
-    <FileImage
-      src={fileType[item?.name?.split(".")?.pop() || ""] || imageFileUnknown}
-      alt={item.type}
-    />
-    <Info>
-      <Name>{item.name}</Name>
-      <FileSize>{formatFileSize(item.size, "Bytes", "MB")}</FileSize>
-    </Info>
-    <CrossButton onClick={() => onDelete?.(item.lastModified.toString())} />
-  </Wrapper>
-);
+const FileItem: FC<IFileItemProps> = ({ item, onDelete, readOnly }) => {
+  const handlerOpenFile = () => {
+    if (readOnly) {
+      let downloadLink = document.createElement("a");
+      downloadLink.href = item.link!;
+      downloadLink.download = item.name;
+      downloadLink.target = "_blank";
+      document.body.appendChild(downloadLink);
+      downloadLink.click();
+      document.body.removeChild(downloadLink);
+    }
+  };
+
+  return (
+    <Wrapper onClick={handlerOpenFile}>
+      <FileImage
+        src={fileType[item?.name?.split(".")?.pop() || ""] || imageFileUnknown}
+        alt={item.name}
+      />
+      <Info>
+        <Name>{item.name}</Name>
+        <FileSize>{formatFileSize(item.size, "Bytes", "MB")}</FileSize>
+      </Info>
+      {!readOnly && (
+        <CrossButton
+          type={"button"}
+          onClick={() => onDelete?.(item.lastModified?.toString()!)}
+        />
+      )}
+    </Wrapper>
+  );
+};
 
 export default FileItem;

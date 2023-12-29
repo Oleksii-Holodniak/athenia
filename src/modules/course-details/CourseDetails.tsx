@@ -1,11 +1,14 @@
 "use client";
 import imagePlug from "@/assets/images/empty.png";
-import { IconCopyRight } from "@/common/components/icons";
-import { getMediaType } from "@/common/helpers/media";
+import {
+  IconClockHour,
+  IconCopyRight,
+  IconUserManager,
+} from "@/common/components/icons";
+import { useDetailsStore } from "@/common/store/course-details";
 import { useUserStore } from "@/common/store/user";
-import Image from "next/image";
 import { useSnackbar } from "notistack";
-import { FC, useState } from "react";
+import { useState } from "react";
 import { BuyCourse, Forms, NotAllow } from "./components";
 import {
   Banner,
@@ -13,29 +16,32 @@ import {
   Copy,
   Head,
   ImageCourse,
+  Info,
   Information,
+  Manager,
   Paragraph,
   SecurityCode,
   Social,
   TagList,
   Tags,
+  Time,
   Title,
   Wrapper,
 } from "./styles";
-import { ICoursesDetailsProps } from "./types";
 
-const CourseDetails: FC<ICoursesDetailsProps> = (props) => {
+const CourseDetails = () => {
+  const course = useDetailsStore((state) => state.course);
   const {
     description,
-    id,
     preview,
     title,
-    media,
     owners,
     tags,
     securityCode,
     students,
-  } = props.course;
+    time,
+  } = course;
+
   const { enqueueSnackbar } = useSnackbar();
   const [opened, setOpened] = useState(false);
   const isAuthorized = useUserStore((state) => state.isAuthorized);
@@ -52,17 +58,9 @@ const CourseDetails: FC<ICoursesDetailsProps> = (props) => {
           message: "Successfully copied code",
         });
       } catch (err) {
-        enqueueSnackbar({ variant: "success", message: "Failed to copy" });
+        enqueueSnackbar({ variant: "error", message: "Failed to copy" });
       }
     }
-  };
-
-  const renderMedia = () => {
-    return media?.map((media, id) => (
-      <a key={id} href={media.link}>
-        <Image src={getMediaType(media.name)} alt="facebook" />
-      </a>
-    ));
   };
 
   const renderTags = () => {
@@ -89,6 +87,15 @@ const CourseDetails: FC<ICoursesDetailsProps> = (props) => {
             <TagList>{renderTags()}</TagList>
           </Information>
           <Social>
+            <Info>
+              <Time>
+                <IconClockHour />
+                {Number(time)}h
+              </Time>
+              <Manager href={`mailto:${course.owners?.[0].email}`}>
+                <IconUserManager />
+              </Manager>
+            </Info>
             {IS_OWNER && (
               <SecurityCode>
                 <span>{securityCode}</span>
@@ -97,7 +104,6 @@ const CourseDetails: FC<ICoursesDetailsProps> = (props) => {
                 </Copy>
               </SecurityCode>
             )}
-            {renderMedia()}
           </Social>
         </Banner>
       </Head>

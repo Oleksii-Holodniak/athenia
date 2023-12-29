@@ -16,7 +16,7 @@ export const renderInputError = (hasError: TErrorForm | IErrorForm) => {
     case "max":
       return `Maximum value: ${hasError?.message}`;
     case "min":
-      return `Minimum value: ${hasError?.message}`;
+      return hasError?.message;
     case "validate":
       return hasError?.message || "The field contains invalid data.";
     case "pattern":

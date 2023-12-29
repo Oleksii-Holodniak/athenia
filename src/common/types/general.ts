@@ -29,6 +29,7 @@ export interface IOpenable {
   isOpen: boolean;
 }
 
+
 export type TSelectOptionGenericType = string | number | boolean | object;
 
 export type IFormatFileSize = "Bytes" | "KB" | "MB" | "GB";
