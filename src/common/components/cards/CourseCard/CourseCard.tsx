@@ -10,13 +10,15 @@ import {
   Preview,
   TagList,
   Tags,
+  Time,
   Title,
   Wrapper,
 } from "./styles";
 import { ICourseComponent } from "./types";
+import { IconClockHour } from "../../icons";
 
 const CourseCard: FC<ICourseComponent> = (props) => {
-  const { description, title, preview, id, tags } = props.course;
+  const { description, title, preview, id, tags , time} = props.course;
   const { push } = useRouter();
 
   const renderTags = () => {
@@ -27,6 +29,10 @@ const CourseCard: FC<ICourseComponent> = (props) => {
     <Wrapper onClick={() => push(LINK_TEMPLATES.COURSE_DETAILS(id))}>
       <Container className="container">
         <Glossiness>
+        <Time>
+          <IconClockHour />
+          {Number(time)}h
+        </Time>
           <Preview
             src={preview || imagePlug}
             alt="preview"

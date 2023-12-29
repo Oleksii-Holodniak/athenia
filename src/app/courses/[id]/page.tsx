@@ -1,4 +1,5 @@
 import { BaseLayout } from "@/common/layouts";
+import { InitDetailsSync } from "@/common/store/course-details/InitDetailsSync";
 import { ICourse } from "@/common/types/models";
 import CourseDetails from "@/modules/course-details/CourseDetails";
 import { ICoursesDetailsPageProps } from "@/modules/course-details/types";
@@ -47,7 +48,8 @@ const DetailsPage: NextPage<ICoursesDetailsPageProps> = async ({ params }) => {
   }
   return (
     <BaseLayout>
-      <CourseDetails course={courseData} />
+      <InitDetailsSync course={courseData} />
+      <CourseDetails />
     </BaseLayout>
   );
 };

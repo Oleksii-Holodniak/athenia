@@ -6,13 +6,22 @@ import { EmptyState, List, Wrapper } from "./styles";
 import { IFileListProps } from "./types";
 
 const FilesList: FC<IFileListProps> = (props) => {
-  const { onDelete, files } = props;
+  const { onDelete, files, readOnly } = props;
 
   const renderFiles = () => {
-    return files?.map((item) => (
-      <FileItem key={item.lastModified} item={item} onDelete={onDelete} />
+    return files?.map((item, id) => (
+      <FileItem
+        key={id}
+        item={item}
+        onDelete={onDelete}
+        readOnly={!!readOnly}
+      />
     ));
   };
+
+  if (!files?.length && readOnly) {
+    return null;
+  }
 
   return (
     <Wrapper>

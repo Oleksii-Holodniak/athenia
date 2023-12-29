@@ -47,3 +47,21 @@ export const Tab = styled.button<IActiveble>`
           color: #272727ff;
         `}
 `;
+
+export const List = styled.div`
+  ${({ theme }) => theme.flex.column}
+  gap: 16px;
+  width: 100%;
+`;
+
+export const ExamLink = styled.a`
+  color: ${({ theme }) => theme.colors.primary.main400};
+  ${({ theme }) => theme.flex.row};
+  gap: 4px;
+  font-size: 16px;
+  svg {
+    path {
+      stroke: ${({ theme }) => theme.colors.primary.main400};
+    }
+  }
+`;

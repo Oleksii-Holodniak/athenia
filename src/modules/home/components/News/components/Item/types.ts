@@ -1,5 +1,5 @@
-import { ICourse } from "@/common/types/models";
+import { ICourseMock } from "@/mocks/courses";
 
 export interface IItem {
-  item: ICourse;
+  item: ICourseMock;
 }

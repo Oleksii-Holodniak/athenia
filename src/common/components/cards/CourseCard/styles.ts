@@ -39,6 +39,18 @@ export const Glossiness = styled.div`
   background-color: #fff;
 `;
 
+export const Time = styled.div`
+  position: absolute;
+  right: -1px;
+  top: -1px;
+  background-color: ${({ theme }) => theme.colors.primary.main};
+  box-shadow: 0px 0px 20px -5px #10101065;
+  border-bottom-left-radius: 8px;
+  padding: 4px 8px;
+  gap: 2px;
+  ${({ theme }) => theme.flex.center};
+`;
+
 export const Preview = styled(Image)`
   height: 100%;
   width: 100%;

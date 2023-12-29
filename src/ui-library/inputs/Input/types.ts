@@ -7,6 +7,7 @@ export interface IInput extends IBaseInputProps, IErrored {
   label?: string;
   type?: "text" | "number" | "password";
   endIcon?: StaticImageData;
+  step?: string;
   startIcon?: ReactNode;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   defaultValue?: string;
