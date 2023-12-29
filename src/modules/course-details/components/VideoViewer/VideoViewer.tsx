@@ -2,8 +2,6 @@ import { IconClose } from "@/common/components/icons";
 import { AnimatedModal } from "@/common/components/modals";
 import { Player } from "@/common/components/shared";
 import { useDetailsStore } from "@/common/store/course-details";
-import "@videojs/themes/dist/city/index.css";
-import "video.js/dist/video-js.css";
 import { Exit, Wrapper } from "./styles";
 
 const VideoViewer = () => {
@@ -14,9 +12,9 @@ const VideoViewer = () => {
   return (
     <AnimatedModal opened={opened} onClose={() => onClose(false)}>
       <Wrapper>
-          <Exit type="button" onClick={() => onClose(false)}>
-            <IconClose />
-          </Exit>
+        <Exit type="button" onClick={() => onClose(false)}>
+          <IconClose />
+        </Exit>
         <Player link={link} />
       </Wrapper>
     </AnimatedModal>
