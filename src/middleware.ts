@@ -11,6 +11,10 @@ const redirect = (req: NextRequest) => {
 
 export const middleware = async (req: NextRequest, res: NextApiResponse) => {
   const url = req.nextUrl.pathname;
+  const cookies = JSON.parse(
+    req.cookies.get(process.env.COOKIES_NAME!)?.value || "false"
+  );
+  console.log("cookies :", cookies);
 
   if (protectedRoutes.includes(url)) {
     if (!req.cookies.has(process.env.COOKIES_NAME!)) {
